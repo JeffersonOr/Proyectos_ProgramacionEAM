@@ -97,10 +97,10 @@ public class JavaApplication1 {
     static void calcularDivisores(int numeroEntero) { //Opcion 3
 
         for (int i = 1; i <= numeroEntero; i++) {
-            if (numeroEntero%i==0) {
-                
+            if (numeroEntero % i == 0) {
+
                 System.out.println(i);
-                
+
             }
         }
 
