@@ -52,7 +52,7 @@ public class JavaApplication1 {
                 int numeroPotencia = scanner.nextInt();
                 int resultadoCase2 = CalcularPotencia(numeroBase, numeroPotencia);
                 System.out.println("El resultado es: " + resultadoCase2);
-
+                break;
             case 3:
 
                 System.out.println("Ha eligido la opcion 3: imprimir divisores de un entero ");
