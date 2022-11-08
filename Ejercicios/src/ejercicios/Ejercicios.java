@@ -105,30 +105,40 @@ public class Ejercicios {
 
                     case 2:
                         System.out.println("Has eligido la opcion 1\nPor favor crea una contraseña:");
-                        String inputPassword_MainTallerDeRepasoModulo3Option2 = scanner.nextLine();
+                        String inputPassword_MainTallerDeRepasoModulo3Option2 = scanner.next();
                         System.out.println("Contraseña creada satisfactoriamente ;D\n"
                                 + "Verifica tu contraseña:");
-                        String inputVerificPassword_MainTallerDeRepasoModulo3Option2 = scanner.nextLine();
-                        boolean resultValidation;
+                        String inputVerificPassword_MainTallerDeRepasoModulo3Option2 = scanner.next();
+                        boolean resultValidation = inputPassword_MainTallerDeRepasoModulo3Option2 == inputVerificPassword_MainTallerDeRepasoModulo3Option2;
 
                         if (inputPassword_MainTallerDeRepasoModulo3Option2 == inputVerificPassword_MainTallerDeRepasoModulo3Option2) {
 
-                            resultValidation = false;
+                            resultValidation = true;
                             System.out.println("Contraseña valida :D");
 
-                        } else {
+                        }
 
-                            resultValidation = true;
-                            while (resultValidation) {
+                            
+                            while (resultValidation = false) {
                                 System.out.println("Contraseña invalida D:\n"
                                         + "Digite nuevamente su contraseña:");
-                                inputVerificPassword_MainTallerDeRepasoModulo3Option2 = scanner.nextLine();
+                                inputVerificPassword_MainTallerDeRepasoModulo3Option2 = scanner.next();
                                 if (inputPassword_MainTallerDeRepasoModulo3Option2 == inputVerificPassword_MainTallerDeRepasoModulo3Option2) {
                                     resultValidation = false;
                                 }
 
                             }
-                        }
+                        
+
+                        break;
+
+                    case 3:
+                        System.out.println("Has eligido la opcion 1\nDigite un numero primo para saber su tabla del 20:");
+                        int inputNumberPrimo_MainTallerDeRepasoModulo3Option3 = scanner.nextInt();
+                        multiplicarx20_NumeroPrimo(inputNumberPrimo_MainTallerDeRepasoModulo3Option3);
+                        
+                        
+                        
 
                         break;
 
@@ -168,6 +178,24 @@ public class Ejercicios {
         String message = number % 2 == 0 ? "Es perfecto" : "No es perfecto";
 
         return message;
+
+    }
+
+    static void multiplicarx20_NumeroPrimo(int number1) {//multiplicar numero primo
+        
+
+        if (number1 % 2 == 0) {
+
+            for (int i = 1; i <= 20; i++) {
+
+                int result = number1 * i;
+                System.out.println(number1+"x"+i+"="+result);
+            }
+
+        }else{
+        
+        System.out.println("No es numero primo");
+        }
 
     }
 
