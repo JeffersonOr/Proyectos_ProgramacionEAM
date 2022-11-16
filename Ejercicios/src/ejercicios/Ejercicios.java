@@ -11,10 +11,11 @@ import java.util.Scanner;
  * @author jeff
  */
 public class Ejercicios {
-
-    /**
-     * @param args the command line arguments
-     */
+////BuclesArrays
+    
+    static int[] numerosEnteros;
+    
+////FinBuclesArrays
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -23,7 +24,8 @@ public class Ejercicios {
                 + "Menu de seleccion\n\n"
                 + "1.Condicionales\n"
                 + "2.Bucles\n"
-                + "3.Taller de repaso Modulo 3");//Principal main
+                + "3.Taller de repaso Modulo 3\n"
+                + "4.Taller bucles y arreglos\n");//Principal main
         int inputOptionMain = scanner.nextInt();
 
         switch (inputOptionMain) {
@@ -260,7 +262,40 @@ public class Ejercicios {
 
                 break;//Fin taller de repaso modulo 3
 
+            case 4:///////////////////Taller bucles y arreglos
+
+                int inputOptionTallerBuclesArray = scanner.nextInt();
+                do {
+                    System.out.println("Ejercicios Bucles y Arreglos\n"
+                            + "EAM® Su difusión, reproducción o uso total o parcial para cualquier otro propósito queda prohibida, todos los derechos reservados. 1\n"
+                            + "1. Dado un arreglo de números enteros, identifique y retorne el mayor de ellos.\n\n"
+                            + "2. Dado un arreglo de números enteros, calcule el promedio y retórnelo.\n\n"
+                            + "3. Registre la información de 5 personas (nombre, cédula y edad).\n"
+                            + "a. Construya un método que le permita conocer la información de la persona más\n"
+                            + "joven.\n\n"
+                            + "4. Construir una aplicación que simule el juego “agalludo”\n"
+                            + "a. Consiste en un juego donde se lanza un dado, cualquier número entre el 2 y el 6\n"
+                            + "suman a un total, mientras que el 1 termina el juego. La persona en turno puede\n"
+                            + "lanzar cuantas veces desee siempre que no haya obtenido el 1.\n"
+                            + "b. Si la persona se retira antes de obtener un 1, el sistema le muestra el total que\n"
+                            + "acumuló.\n"
+                            + "c. Consulte como obtener un número aleatorio.\n\n"
+                            + "5.Finalizar ejecucion");
+                    
+                    switch(inputOptionTallerBuclesArray){//////1.optionBuclesArrays
+                        
+                        case 1:
+                            
+                        
+                            
+                    
+                    
+                    }
+
+                } while (inputOptionTallerBuclesArray != 5);
+                break;
         }
+        
     }
 
     ///////////////////////////////////methots
@@ -307,6 +342,17 @@ public class Ejercicios {
         }
 
     }
-
+    
     //////Fin taller de repaso Modulo 3
+    
+    //////TallerBuclesArray
+    
+    static String validarNmayor(){
+    
+    
+        
+    return null;
+    }
+    
+    //////FinTallerBuclesArray
 }
