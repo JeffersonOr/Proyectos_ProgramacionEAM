@@ -814,10 +814,34 @@ public class Final_Proyect {
                                 break;
 
                             case 2:
+                                
+                                if (concursosActivos[1] == "Inactivo") {////Primero validamos si esta disponible
+
+                                    System.out.println("\nEste concurso no esta disponible >:c\n");
+
+                                } else {///Si esta disponible se procede al siguiente paso
+                                    System.out.println("Determinado ganador del concurso: " + nombresConcursos[1] + "...");
+                                    int numeroRandomConcurso2 = ra.nextInt(1 - cantidadesMax[1]);
+
+                                    detereminarGanadorConcurso1(numeroRandomConcurso2);
+
+                                }
 
                                 break;
 
                             case 3:
+                                
+                                if (concursosActivos[2] == "Inactivo") {////Primero validamos si esta disponible
+
+                                    System.out.println("\nEste concurso no esta disponible >:c\n");
+
+                                } else {///Si esta disponible se procede al siguiente paso
+                                    System.out.println("Determinado ganador del concurso: " + nombresConcursos[2] + "...");
+                                    int numeroRandomConcurso3 = ra.nextInt(1 - cantidadesMax[2]);
+
+                                    detereminarGanadorConcurso1(numeroRandomConcurso3);
+
+                                }
 
                                 break;
 
@@ -1140,6 +1164,18 @@ public class Final_Proyect {
         return ":c?";
 
     }
+    /*
+    static void Elminarconcurso1() {
+        for (int i = 0; i < nombresConcursos.length; i++) {
+            if(nombresConcursos){
+            
+                
+            
+            
+            }
+        }
+        
+    }*/
 
     static void detereminarGanadorConcurso1(int numeroRandom) {
 
@@ -1161,12 +1197,6 @@ public class Final_Proyect {
 
     }
 
-    static void Elminarconcurso1() {
-        for (int i = 0; i < nombres; i++) {
-            
-        }
-        
-    }
 
     static void detereminarGanadorConcurso2(int numeroRandom) {
 
