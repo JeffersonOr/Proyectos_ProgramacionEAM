@@ -4,6 +4,7 @@
  */
 package final_proyect;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -28,31 +29,34 @@ public class Final_Proyect {
     static String[] telefonosUserConcurso1 = new String[]{null};
     static String[] generosUserConcurso1 = new String[]{null};
     static String[] correosUserConcurso1 = new String[]{null};
+    static int[] numerosUserAleatorioConcurso1 = new int[]{0};
     static String[] concursosUser1 = new String[]{null};
     ////Fin usuariosAtributosConcurso1
 
     ////UsuariosAtributosConcurso2
     static String[] nombresUserConcurso2 = new String[]{null};
-    static String[] cedulasUserConcurso2;
-    static int[] edadesUserConcurso2;
-    static int[] estratosUserConcurso2;
-    static String[] direccionesUserConcurso2;
-    static String[] telefonosUserConcurso2;
-    static String[] generosUserConcurso2;
-    static String[] correosUserConcurso2;
-    static String[] concursosUser2;
+    static String[] cedulasUserConcurso2 = new String[]{null};
+    static int[] edadesUserConcurso2 = new int[]{0};
+    static int[] estratosUserConcurso2 = new int[]{0};
+    static String[] direccionesUserConcurso2 = new String[]{null};
+    static String[] telefonosUserConcurso2 = new String[]{null};
+    static String[] generosUserConcurso2 = new String[]{null};
+    static String[] correosUserConcurso2 = new String[]{null};
+    static int[] numerosUserAleatorioConcurso2 = new int[]{0};
+    static String[] concursosUser2 = new String[]{null};
     ////Fin usuariosAtributosConcurso2
 
     ////UsuariosAtributosConcurso3
     static String[] nombresUserConcurso3 = new String[]{null};
-    static String[] cedulasUserConcurso3;
-    static int[] edadesUserConcurso3;
-    static int[] estratosUserConcurso3;
-    static String[] direccionesUserConcurso3;
-    static String[] telefonosUserConcurso3;
-    static String[] generosUserConcurso3;
-    static String[] correosUserConcurso3;
-    static String[] concursosUser3;
+    static String[] cedulasUserConcurso3 = new String[]{null};
+    static int[] edadesUserConcurso3 = new int[]{0};
+    static int[] estratosUserConcurso3 = new int[]{0};
+    static String[] direccionesUserConcurso3 = new String[]{null};
+    static String[] telefonosUserConcurso3 = new String[]{null};
+    static String[] generosUserConcurso3 = new String[]{null};
+    static String[] correosUserConcurso3 = new String[]{null};
+    static int[] numerosUserAleatorioConcurso3 = new int[]{0};
+    static String[] concursosUser3 = new String[]{null};
     ////Fin usuariosAtributosConcurso3
 
     public static void main(String[] args) {
@@ -60,6 +64,7 @@ public class Final_Proyect {
         ////Creacion concursos (3)
         /////nombre, cedula, edad, estrato, direccion, telefono, genero y correo
         Scanner sc = new Scanner(System.in);
+        Random ra = new Random();
 
         System.out.println("Bienvenido al manager de concursos");
 
@@ -69,7 +74,8 @@ public class Final_Proyect {
 
             System.out.println("1.Para registrar concurso\n"
                     + "2.Registrar usuario\n"
-                    + "3.Status concursos\n"
+                    + "3.Status\n"
+                    + "4.Administrar usuario\n"
                     + "0.Para terminar ejecucion");
 
             inputOptionUser = sc.nextInt();
@@ -81,6 +87,7 @@ public class Final_Proyect {
                     boolean repetirRegistroConcurso = true;
                     int contador = 0;//Se declara este contador para validar las repeticiones del ciclo
                     int numeroConcurso = 1;//Se declara para mostrar en pantalla el numero de concurso
+
                     do { //Do while para el registro de usuarios
 
                         int i = contador++;
@@ -93,23 +100,11 @@ public class Final_Proyect {
                         System.out.println("Digite el nombre del concurso");
                         String nombreConcurso1 = sc.nextLine();
                         String inputnombreConcurso = sc.nextLine();
+
                         cantidadesMax[i] = inputCantidadUsers;//////Resgistrar Cantidad Maxima en el Array
                         concursosActivos[i] = "Activo";////Activar concurso en el Array
                         nombresConcursos[i] = inputnombreConcurso;////Registrar nombre del concurso en el Array
 
-                        ///////////////////////////////////////////////////////////////Inicializamos los atributos del usuario para determinar el tamaño de cada Array a corde al concurso 
-                        ///////////////////////////////////////////////////////////////Esto con el fin de saber la cantidad de usuarios registrados en el concurso
-                        nombresUserConcurso1 = new String[cantidadesMax[i]];
-                        cedulasUserConcurso1 = new String[cantidadesMax[i]];
-                        edadesUserConcurso1 = new int[cantidadesMax[i]];
-                        estratosUserConcurso1 = new int[cantidadesMax[i]];
-                        direccionesUserConcurso1 = new String[cantidadesMax[i]];
-                        telefonosUserConcurso1 = new String[cantidadesMax[i]];
-                        generosUserConcurso1 = new String[cantidadesMax[i]];
-                        correosUserConcurso1 = new String[cantidadesMax[i]];
-
-                        //////////////////////////////////////////////////////////////
-                        /////////////////////////////////////////////////////////////
                         if (i < 2) {////////Validar si desea continuar con el registro de concursos
                             System.out.println("Usted ha registrado " + inputCantidadUsers + " cupos de participantes en el concurso " + concursoNumero + "(" + inputnombreConcurso + ")"
                                     + "\nDesea registrar mas concursos?\n"
@@ -117,6 +112,7 @@ public class Final_Proyect {
                                     + "2.No");
 
                             int inputOptionContinuar = sc.nextInt();
+
                             if (inputOptionContinuar == 2) {
                                 repetirRegistroConcurso = false;
                                 System.out.println(concursoNumero + " Concurso(s) registrado(s) correctamente :)\n");
@@ -128,16 +124,19 @@ public class Final_Proyect {
 
                     } while (repetirRegistroConcurso);
                     break;
-                /////////////////Fin registro concurso///////////////////////////
 
+                /////////////////Fin registro concurso///////////////////////////
                 case 2://///////////////////Registro de usuarios en concursos////////////////////////////////
 
                     if (concursosActivos[0] == "Inactivo" && concursosActivos[1] == "Inactivo" && concursosActivos[2] == "Inactivo") {
                         System.out.println("Lo sentimos, no hay concursos activos :(");
 
                     } else {
+
                         int inputOptionConcurso;
+
                         do {
+
                             System.out.println("Bienvenido al registro de usuarios\n"
                                     + "A que concurso lo deseas registrar?\n"
                                     + "1.Concurso " + nombresConcursos[0] + "(" + concursosActivos[0] + ")\n"
@@ -153,7 +152,7 @@ public class Final_Proyect {
 
                                     if (concursosActivos[0] == "Inactivo") {////Primero validamos si esta disponible
 
-                                        System.out.println("Este concurso no esta disponible >:c");
+                                        System.out.println("\nEste concurso no esta disponible >:c\n");
 
                                     } else {///Si esta disponible se procede al siguiente paso
 
@@ -164,13 +163,30 @@ public class Final_Proyect {
 
                                         } else {///Si hay cupos se procede al registro de participantes
 
+                                            ///////////////////////////////////////////////////////////////Inicializamos los atributos del usuario para determinar el tamaño de cada Array a corde al concurso 
+                                            ///////////////////////////////////////////////////////////////Esto con el fin de saber la cantidad de usuarios registrados en el concurso
+                                            nombresUserConcurso1 = new String[cantidadesMax[0]];
+                                            cedulasUserConcurso1 = new String[cantidadesMax[0]];
+                                            edadesUserConcurso1 = new int[cantidadesMax[0]];
+                                            estratosUserConcurso1 = new int[cantidadesMax[0]];
+                                            direccionesUserConcurso1 = new String[cantidadesMax[0]];
+                                            telefonosUserConcurso1 = new String[cantidadesMax[0]];
+                                            generosUserConcurso1 = new String[cantidadesMax[0]];
+                                            correosUserConcurso1 = new String[cantidadesMax[0]];
+                                            numerosUserAleatorioConcurso1 = new int[cantidadesMax[0]];
+
+                                            //////////////////////////////////////////////////////////////
+                                            /////////////////////////////////////////////////////////////
                                             System.out.println("Iniciando registro de usuario en concurso: " + nombresConcursos[0] + "...");
-                                            int contadorRegistroConcurso1 = 0;
+                                            int contadorRegistroConcurso1 = 1;
                                             boolean repetirRegistroParticipantes = true;
+
+                                            int i = 0;///Contador para controlar la veces en que se repite el ciclo do while
+                                            int numeroUsuario = 1;
 
                                             do {
 
-                                                System.out.println("Cupos maximos: " + (cantidadesMax[0] - contadorRegistroConcurso1));
+                                                System.out.println("Cupos maximos: " + (cantidadesMax[0] - 1));
                                                 boolean validar = true;
 
                                                 System.out.println("Digita la cedula");///////////////////CedulaPersona
@@ -178,7 +194,7 @@ public class Final_Proyect {
                                                 String inputCedulaPersonaConcurso1 = sc.nextLine();
 
                                                 System.out.println("Digita el nombre");////////////////NombrePersona
-                                                String inputNombrePersona1 = sc.nextLine();
+
                                                 String inputNombrePersonaConcurso1 = sc.nextLine();
 
                                                 System.out.println("Por favor digita la edad de la persona");/////////////EdadPersona
@@ -217,47 +233,46 @@ public class Final_Proyect {
                                                 String inputDireccionPersonaConcurso1 = sc.nextLine();
 
                                                 System.out.println("Digita el telefono");//////////TelefonoPersona
-                                                String inputTefonoPersona1 = sc.nextLine();
+
                                                 String inputTefonoPersonaConcurso1 = sc.nextLine();
 
                                                 System.out.println("Digita el genero");//////////GeneroPersona
-                                                String inputGeneroPersona1 = sc.nextLine();
+
                                                 String inputGeneroPersonaConcurso1 = sc.nextLine();
 
                                                 System.out.println("Digita el correo de la persona");///////CorreoPersona
-                                                String inputCorreoPersona1 = sc.nextLine();
+
                                                 String inputCorreoPersonaConcurso1 = sc.nextLine();
 
-                                                validar = true;
-                                                System.out.println("Participante registrado correctamente :)");
-
-                                              
-                                                int i = contadorRegistroConcurso1++;///Contador para controlar la veces en que se repite el ciclo do while
-                                                int validarCantidadConcurso1 = cantidadesMax[0] - i;////Con esta variable validamos si se alcanza el limite de cupos o no
-                                                cantidadesMax[0] = validarCantidadConcurso1;/////Se procede a agregar el cupo disponible al array del concurso
-                                                concursosUser1 = new String[]{nombresConcursos[0]};/////Se registra el concurso a la persona
-                                                
-                                                
-                                                
                                                 ////////////////////////////////////////////////////////Se procede a registrar los datos en los arrays
                                                 nombresUserConcurso1[i] = inputNombrePersonaConcurso1;
                                                 cedulasUserConcurso1[i] = inputCedulaPersonaConcurso1;
                                                 edadesUserConcurso1[i] = inputEdadPersonaConcurso1;
                                                 estratosUserConcurso1[i] = inputEstratoPersonaConcurso1;
-                                                direccionesUserConcurso1[i] = inputDireccionPersona1;
+                                                direccionesUserConcurso1[i] = inputDireccionPersonaConcurso1;
                                                 telefonosUserConcurso1[i] = inputTefonoPersonaConcurso1;
                                                 generosUserConcurso1[i] = inputGeneroPersonaConcurso1;
                                                 correosUserConcurso1[i] = inputCorreoPersonaConcurso1;
+                                                concursosUser1 = new String[]{nombresConcursos[0]};/////Se registra el concurso a la persona
+
+                                                numerosUserAleatorioConcurso1[i] = numeroUsuario;
                                                 ///////////////////////////////////////////////////////
 
-                                                if (validarCantidadConcurso1 <= 0) {
+                                                System.out.println("Participante registrado correctamente :)");
+
+                                                i = contadorRegistroConcurso1++;/////Se procede a sumar al contador
+                                                numeroUsuario = numeroUsuario++;///////Variable para asignar un numero al participante
+                                                int validarCantidadConcurso1 = cantidadesMax[0] - 1;////Con esta variable validamos si se alcanza el limite de cupos o no
+                                                cantidadesMax[0] = validarCantidadConcurso1;/////Se procede a agregar el cupo disponible al array del concurso
+
+                                                validar = true;
+                                                if (validarCantidadConcurso1 == 0) {
                                                     System.out.println("Se ha alcanzado el limite de cupos");
                                                     repetirRegistroParticipantes = false;
                                                 } else {
 
                                                     while (validar) {////////While para validar si desea agregar mas y verificar las opciones que se ingresan
 
-                                                        
                                                         System.out.println("Deseas agregar mas participantes?\n"
                                                                 + "S.Para si\nN.para no");
 
@@ -287,39 +302,56 @@ public class Final_Proyect {
                                     break;
 
                                 case 2:////////Registro de usuario en concurso 2
-
                                     if (concursosActivos[1] == "Inactivo") {////Primero validamos si esta disponible
 
-                                        System.out.println("Este concurso no esta disponible >:c");
+                                        System.out.println("\nEste concurso no esta disponible >:c\n");
 
                                     } else {///Si esta disponible se procede al siguiente paso
 
-                                        if (cantidadesMax[1] <= 0) {/////Primero se valida si hay cupos disponibles con esta condicional
+                                        if (cantidadesMax[1] <= 0) {/////Segundo se valida si hay cupos disponibles con esta condicional
 
                                             System.out.println("Lo sentimos, no quedan cupos disponibles en el concurso: " + nombresConcursos[1] + "\n"
                                                     + ":(");
 
                                         } else {///Si hay cupos se procede al registro de participantes
 
+                                            ///////////////////////////////////////////////////////////////Inicializamos los atributos del usuario para determinar el tamaño de cada Array a corde al concurso 
+                                            ///////////////////////////////////////////////////////////////Esto con el fin de saber la cantidad de usuarios registrados en el concurso
+                                            nombresUserConcurso2 = new String[cantidadesMax[1]];
+                                            cedulasUserConcurso2 = new String[cantidadesMax[1]];
+                                            edadesUserConcurso2 = new int[cantidadesMax[1]];
+                                            estratosUserConcurso2 = new int[cantidadesMax[1]];
+                                            direccionesUserConcurso2 = new String[cantidadesMax[1]];
+                                            telefonosUserConcurso2 = new String[cantidadesMax[1]];
+                                            generosUserConcurso2 = new String[cantidadesMax[1]];
+                                            correosUserConcurso2 = new String[cantidadesMax[1]];
+                                            numerosUserAleatorioConcurso2 = new int[cantidadesMax[1]];
+
+                                            //////////////////////////////////////////////////////////////
+                                            /////////////////////////////////////////////////////////////
                                             System.out.println("Iniciando registro de usuario en concurso: " + nombresConcursos[1] + "...");
                                             int contadorRegistroConcurso2 = 1;
                                             boolean repetirRegistroParticipantes = true;
 
+                                            int i = 0;///Contador para controlar la veces en que se repite el ciclo do while
+                                            int numeroUsuario = 1;
+
                                             do {
 
-                                                System.out.println("Cupos maximos: " + (cantidadesMax[1] - contadorRegistroConcurso2));
+                                                System.out.println("Cupos maximos: " + (cantidadesMax[1] - 1));
+                                                boolean validar = true;
 
                                                 System.out.println("Digita la cedula");///////////////////CedulaPersona
                                                 String inputCedulaPersona1 = sc.nextLine();
                                                 String inputCedulaPersonaConcurso2 = sc.nextLine();
 
                                                 System.out.println("Digita el nombre");////////////////NombrePersona
-                                                String inputNombrePersona1 = sc.nextLine();
+
                                                 String inputNombrePersonaConcurso2 = sc.nextLine();
 
                                                 System.out.println("Por favor digita la edad de la persona");/////////////EdadPersona
-                                                boolean validar = true;
-                                                int inputEdadPersonaConcurso2;
+                                                validar = true;
+                                                int inputEdadPersonaConcurso2 = 0;
 
                                                 while (validar) {//////While para validar si es mayor de edad
                                                     inputEdadPersonaConcurso2 = sc.nextInt();
@@ -334,7 +366,7 @@ public class Final_Proyect {
 
                                                 System.out.println("Digita el estrato\n"
                                                         + "Solo puede digitar un numero del 1 al 6");/////////////estratoPersona
-                                                int inputEstratoPersonaConcurso2;
+                                                int inputEstratoPersonaConcurso2 = 0;
                                                 validar = true;
 
                                                 while (validar) {//////While para validar si el estrato esta entre 1 y 6
@@ -353,26 +385,40 @@ public class Final_Proyect {
                                                 String inputDireccionPersonaConcurso2 = sc.nextLine();
 
                                                 System.out.println("Digita el telefono");//////////TelefonoPersona
-                                                String inputTefonoPersona1 = sc.nextLine();
+
                                                 String inputTefonoPersonaConcurso2 = sc.nextLine();
 
                                                 System.out.println("Digita el genero");//////////GeneroPersona
-                                                String inputGeneroPersona1 = sc.nextLine();
+
                                                 String inputGeneroPersonaConcurso2 = sc.nextLine();
 
                                                 System.out.println("Digita el correo de la persona");///////CorreoPersona
-                                                String inputCorreoPersona1 = sc.nextLine();
+
                                                 String inputCorreoPersonaConcurso2 = sc.nextLine();
 
-                                                /////Con esta declaracion se le asigna el concurso al particiante
-                                                validar = true;
+                                                ////////////////////////////////////////////////////////Se procede a registrar los datos en los arrays
+                                                nombresUserConcurso2[i] = inputNombrePersonaConcurso2;
+                                                cedulasUserConcurso2[i] = inputCedulaPersonaConcurso2;
+                                                edadesUserConcurso2[i] = inputEdadPersonaConcurso2;
+                                                estratosUserConcurso2[i] = inputEstratoPersonaConcurso2;
+                                                direccionesUserConcurso2[i] = inputDireccionPersonaConcurso2;
+                                                telefonosUserConcurso2[i] = inputTefonoPersonaConcurso2;
+                                                generosUserConcurso2[i] = inputGeneroPersonaConcurso2;
+                                                correosUserConcurso2[i] = inputCorreoPersonaConcurso2;
+                                                concursosUser2 = new String[]{nombresConcursos[1]};/////Se registra el concurso a la persona
+
+                                                numerosUserAleatorioConcurso2[i] = numeroUsuario;
+                                                ///////////////////////////////////////////////////////
+
                                                 System.out.println("Participante registrado correctamente :)");
 
-                                                int i = contadorRegistroConcurso2++;///Contador para controlar la veces en que se repite el ciclo do while
-                                                int validarCantidadConcurso2 = cantidadesMax[1] - i;////Con esta variable validamos si se alcanza el limite de cupos o no
-                                                cantidadesMax[1] = validarCantidadConcurso2;/////Se procede a agregar el cupo disponible al array
+                                                i = contadorRegistroConcurso2++;/////Se procede a sumar al contador
+                                                numeroUsuario = numeroUsuario++;///////Variable para asignar un numero al participante
+                                                int validarCantidadConcurso2 = cantidadesMax[1] - 1;////Con esta variable validamos si se alcanza el limite de cupos o no
+                                                cantidadesMax[1] = validarCantidadConcurso2;/////Se procede a agregar el cupo disponible al array del concurso
 
-                                                if (validarCantidadConcurso2 <= 0) {
+                                                validar = true;
+                                                if (validarCantidadConcurso2 == 0) {
                                                     System.out.println("Se ha alcanzado el limite de cupos");
                                                     repetirRegistroParticipantes = false;
                                                 } else {
@@ -401,44 +447,64 @@ public class Final_Proyect {
 
                                                     }
                                                 }
+
                                             } while (repetirRegistroParticipantes);
                                         }
                                     }
+
                                     break;
 
                                 case 3:
                                     if (concursosActivos[2] == "Inactivo") {////Primero validamos si esta disponible
 
-                                        System.out.println("Este concurso no esta disponible >:c");
+                                        System.out.println("\nEste concurso no esta disponible >:c\n");
 
                                     } else {///Si esta disponible se procede al siguiente paso
 
-                                        if (cantidadesMax[2] <= 0) {/////Primero se valida si hay cupos disponibles con esta condicional
+                                        if (cantidadesMax[2] <= 0) {/////Segundo se valida si hay cupos disponibles con esta condicional
 
                                             System.out.println("Lo sentimos, no quedan cupos disponibles en el concurso: " + nombresConcursos[2] + "\n"
                                                     + ":(");
 
                                         } else {///Si hay cupos se procede al registro de participantes
 
+                                            ///////////////////////////////////////////////////////////////Inicializamos los atributos del usuario para determinar el tamaño de cada Array a corde al concurso 
+                                            ///////////////////////////////////////////////////////////////Esto con el fin de saber la cantidad de usuarios registrados en el concurso
+                                            nombresUserConcurso3 = new String[cantidadesMax[2]];
+                                            cedulasUserConcurso3 = new String[cantidadesMax[2]];
+                                            edadesUserConcurso3 = new int[cantidadesMax[2]];
+                                            estratosUserConcurso3 = new int[cantidadesMax[2]];
+                                            direccionesUserConcurso3 = new String[cantidadesMax[2]];
+                                            telefonosUserConcurso3 = new String[cantidadesMax[2]];
+                                            generosUserConcurso3 = new String[cantidadesMax[2]];
+                                            correosUserConcurso3 = new String[cantidadesMax[2]];
+                                            numerosUserAleatorioConcurso3 = new int[cantidadesMax[2]];
+
+                                            //////////////////////////////////////////////////////////////
+                                            /////////////////////////////////////////////////////////////
                                             System.out.println("Iniciando registro de usuario en concurso: " + nombresConcursos[2] + "...");
-                                            int contadorRegistroConcurso2 = 1;
+                                            int contadorRegistroConcurso3 = 1;
                                             boolean repetirRegistroParticipantes = true;
+
+                                            int i = 0;///Contador para controlar la veces en que se repite el ciclo do while
+                                            int numeroUsuario = 1;
 
                                             do {
 
-                                                System.out.println("Cupos maximos: " + (cantidadesMax[2] - contadorRegistroConcurso2));
+                                                System.out.println("Cupos maximos: " + (cantidadesMax[2] - 1));
+                                                boolean validar = true;
 
                                                 System.out.println("Digita la cedula");///////////////////CedulaPersona
                                                 String inputCedulaPersona1 = sc.nextLine();
                                                 String inputCedulaPersonaConcurso3 = sc.nextLine();
 
                                                 System.out.println("Digita el nombre");////////////////NombrePersona
-                                                String inputNombrePersona1 = sc.nextLine();
+
                                                 String inputNombrePersonaConcurso3 = sc.nextLine();
 
                                                 System.out.println("Por favor digita la edad de la persona");/////////////EdadPersona
-                                                boolean validar = true;
-                                                int inputEdadPersonaConcurso3;
+                                                validar = true;
+                                                int inputEdadPersonaConcurso3 = 0;
 
                                                 while (validar) {//////While para validar si es mayor de edad
                                                     inputEdadPersonaConcurso3 = sc.nextInt();
@@ -453,12 +519,12 @@ public class Final_Proyect {
 
                                                 System.out.println("Digita el estrato\n"
                                                         + "Solo puede digitar un numero del 1 al 6");/////////////estratoPersona
-                                                int inputEstratoPersonaConcurso2;
+                                                int inputEstratoPersonaConcurso3 = 0;
                                                 validar = true;
 
                                                 while (validar) {//////While para validar si el estrato esta entre 1 y 6
-                                                    inputEstratoPersonaConcurso2 = sc.nextInt();
-                                                    if (inputEstratoPersonaConcurso2 >= 1 && inputEstratoPersonaConcurso2 <= 6) {
+                                                    inputEstratoPersonaConcurso3 = sc.nextInt();
+                                                    if (inputEstratoPersonaConcurso3 >= 1 && inputEstratoPersonaConcurso3 <= 6) {
                                                         validar = false;
                                                     } else {
                                                         System.out.println("Numero fuera de rango >:c\n"
@@ -469,29 +535,43 @@ public class Final_Proyect {
 
                                                 System.out.println("Digita la direccion");//////////DireccionPersona
                                                 String inputDireccionPersona1 = sc.nextLine();
-                                                String inputDireccionPersonaConcurso2 = sc.nextLine();
+                                                String inputDireccionPersonaConcurso3 = sc.nextLine();
 
                                                 System.out.println("Digita el telefono");//////////TelefonoPersona
-                                                String inputTefonoPersona1 = sc.nextLine();
-                                                String inputTefonoPersonaConcurso2 = sc.nextLine();
+
+                                                String inputTefonoPersonaConcurso3 = sc.nextLine();
 
                                                 System.out.println("Digita el genero");//////////GeneroPersona
-                                                String inputGeneroPersona1 = sc.nextLine();
-                                                String inputGeneroPersonaConcurso2 = sc.nextLine();
+
+                                                String inputGeneroPersonaConcurso3 = sc.nextLine();
 
                                                 System.out.println("Digita el correo de la persona");///////CorreoPersona
-                                                String inputCorreoPersona1 = sc.nextLine();
-                                                String inputCorreoPersonaConcurso2 = sc.nextLine();
 
-                                                /////Con esta declaracion se le asigna el concurso al particiante
-                                                validar = true;
+                                                String inputCorreoPersonaConcurso3 = sc.nextLine();
+
+                                                ////////////////////////////////////////////////////////Se procede a registrar los datos en los arrays
+                                                nombresUserConcurso3[i] = inputNombrePersonaConcurso3;
+                                                cedulasUserConcurso3[i] = inputCedulaPersonaConcurso3;
+                                                edadesUserConcurso3[i] = inputEdadPersonaConcurso3;
+                                                estratosUserConcurso3[i] = inputEstratoPersonaConcurso3;
+                                                direccionesUserConcurso3[i] = inputDireccionPersonaConcurso3;
+                                                telefonosUserConcurso3[i] = inputTefonoPersonaConcurso3;
+                                                generosUserConcurso3[i] = inputGeneroPersonaConcurso3;
+                                                correosUserConcurso3[i] = inputCorreoPersonaConcurso3;
+                                                concursosUser3 = new String[]{nombresConcursos[2]};/////Se registra el concurso a la persona
+
+                                                numerosUserAleatorioConcurso3[i] = numeroUsuario;
+                                                ///////////////////////////////////////////////////////
+
                                                 System.out.println("Participante registrado correctamente :)");
 
-                                                int i = contadorRegistroConcurso2++;///Contador para controlar la veces en que se repite el ciclo do while
-                                                int validarCantidadConcurso2 = cantidadesMax[2] - i;////Con esta variable validamos si se alcanza el limite de cupos o no
-                                                cantidadesMax[2] = validarCantidadConcurso2;/////Se procede a agregar el cupo disponible al array
+                                                i = contadorRegistroConcurso3++;/////Se procede a sumar al contador
+                                                numeroUsuario = numeroUsuario++;///////Variable para asignar un numero al participante
+                                                int validarCantidadConcurso3 = cantidadesMax[2] - 1;////Con esta variable validamos si se alcanza el limite de cupos o no
+                                                cantidadesMax[2] = validarCantidadConcurso3;/////Se procede a agregar el cupo disponible al array del concurso
 
-                                                if (validarCantidadConcurso2 <= 0) {
+                                                validar = true;
+                                                if (validarCantidadConcurso3 == 0) {
                                                     System.out.println("Se ha alcanzado el limite de cupos");
                                                     repetirRegistroParticipantes = false;
                                                 } else {
@@ -520,6 +600,7 @@ public class Final_Proyect {
 
                                                     }
                                                 }
+
                                             } while (repetirRegistroParticipantes);
                                         }
                                     }
@@ -533,26 +614,86 @@ public class Final_Proyect {
                         } while (inputOptionConcurso != 0);///////Do while para decidir si repetir el SubMenu o no
                     }
                     break;
+                ///////////////////////////Fin registro usuario en concurso////////////////////////////
 
-                case 3:
+                case 3://////////////////////////Status///////////////////////
 
-                    System.out.println("Concurso 1\n"
-                            + "Cupos: " + cantidadesMax[0]
-                            + "\nNombre: " + nombresConcursos[0]
-                            + "\nEstado: " + concursosActivos[0]
-                            + "\nParticipantes " + nombresUserConcurso1.length + "\n\n");
+                    int inputOptionAdvanced;
 
-                    System.out.println("Concurso 2\n"
-                            + "Cupos: " + cantidadesMax[1]
-                            + "\nNombre: " + nombresConcursos[1]
-                            + "\nEstado: " + concursosActivos[1]
-                            + "\nParticipantes " + nombresUserConcurso2.length + "\n\n");
+                    do {
+                        System.out.println("1.Status concurses\n"
+                                + "2.Status users arrays\n"
+                                + "0.Back to main");
 
-                    System.out.println("Concurso 3\n"
-                            + "Cupos: " + cantidadesMax[2]
-                            + "\nNombre: " + nombresConcursos[2]
-                            + "\nEstado: " + concursosActivos[2]
-                            + "\nParticipantes " + nombresUserConcurso3.length + "\n\n");
+                        inputOptionAdvanced = sc.nextInt();
+
+                        switch (inputOptionAdvanced) {
+
+                            case 1:///Status concurses
+
+                                System.out.println("Concurso 1\n"
+                                        + "Cupos: " + cantidadesMax[0]
+                                        + "\nNombre: " + nombresConcursos[0]
+                                        + "\nEstado: " + concursosActivos[0]
+                                        + "\nParticipantes " + nombresUserConcurso1.length + "\n\n");
+
+                                System.out.println("Concurso 2\n"
+                                        + "Cupos: " + cantidadesMax[1]
+                                        + "\nNombre: " + nombresConcursos[1]
+                                        + "\nEstado: " + concursosActivos[1]
+                                        + "\nParticipantes " + nombresUserConcurso2.length + "\n\n");
+
+                                System.out.println("Concurso 3\n"
+                                        + "Cupos: " + cantidadesMax[2]
+                                        + "\nNombre: " + nombresConcursos[2]
+                                        + "\nEstado: " + concursosActivos[2]
+                                        + "\nParticipantes " + nombresUserConcurso3.length + "\n\n");
+
+                                break;
+
+                            case 2:
+
+                                System.out.println("\nConcurso1");
+                                for (int i = 0; i < cedulasUserConcurso1.length; i++) {
+
+                                    System.out.println("Cedula: " + cedulasUserConcurso1[i] + " Nombre: " + nombresUserConcurso1[i] + " Numero: " + numerosUserAleatorioConcurso1[i]);
+
+                                }
+
+                                System.out.println("\nConcurso2");
+                                for (int i = 0; i < cedulasUserConcurso2.length; i++) {
+
+                                    System.out.println("Cedula: " + cedulasUserConcurso2[i] + " Nombre: " + nombresUserConcurso2[i]);
+
+                                }
+
+                                System.out.println("\nConcurso3");
+                                for (int i = 0; i < cedulasUserConcurso3.length; i++) {
+
+                                    System.out.println("Cedula: " + cedulasUserConcurso3[i] + " Nombre: " + nombresUserConcurso3[i]);
+
+                                }
+
+                                break;
+                            default:
+                                System.out.println("\nInvalid Option >:o\n");
+                                break;
+
+                        }
+                    } while (inputOptionAdvanced != 0);
+                    break;
+                ///////////////////////////////////////////////Fin Status/////////////////////////////////////////////
+
+                case 4:
+
+                    System.out.println("\nDigita la cedula del participante\n");
+                    String inputBuscarCedula1 = sc.nextLine();
+                    String inputBuscarCedula = sc.nextLine();
+                    buscarParticipante(inputBuscarCedula);
+
+                    System.out.println("\nQue deseas hacer?\n"
+                            + "1.Editar informacion del participante\n"
+                            + "2.Eliminar participante");
 
                     break;
 
@@ -615,9 +756,65 @@ public class Final_Proyect {
     }
 
     static boolean validarRepetidosConcurso1(String cedula) {
+        for (int i = 0; i < cedulasUserConcurso1.length; i++) {
 
+            return false;
+        }
+        ///////////////
         return false;
     }
-    ///////////////
 
+    static void buscarParticipante(String cedula) {
+
+        boolean resultado;
+
+        for (int i = 0; i < cedulasUserConcurso1.length; i++) {
+
+            if (cedula.equals(cedulasUserConcurso1[i])) {
+
+                resultado = true;
+                System.out.println("Usuario encontrado :D\n");
+                System.out.println("Cedula: " + cedulasUserConcurso1[i]
+                        + "\nNombre: " + nombresUserConcurso1[i]
+                        + "\nEdad: " + edadesUserConcurso1[i]
+                        + "\nEstrato: " + estratosUserConcurso1[i]
+                        + "\nDireccion: " + direccionesUserConcurso1[i]
+                        + "\nTelefono:" + telefonosUserConcurso1[i]
+                        + "\nGenero: " + generosUserConcurso1[i]
+                        + "\nCorreo :" + correosUserConcurso1[i]
+                        + "\n\nEl participante se encuentra inscrito en el concurso: " + concursosUser1[0]);
+
+            } else {
+
+                resultado = false;
+
+            }
+
+        }
+
+        for (int i = 0; i < cedulasUserConcurso2.length; i++) {
+
+            if (cedula.equals(cedulasUserConcurso1[i])) {
+
+                resultado = true;
+                System.out.println("Usuario encontrado :D\n");
+                System.out.println("Cedula: " + cedulasUserConcurso1[i]
+                        + "\nNombre: " + nombresUserConcurso1[i]
+                        + "\nEdad: " + edadesUserConcurso1[i]
+                        + "\nEstrato: " + estratosUserConcurso1[i]
+                        + "\nDireccion: " + direccionesUserConcurso1[i]
+                        + "\nTelefono:" + telefonosUserConcurso1[i]
+                        + "\nGenero: " + generosUserConcurso1[i]
+                        + "\nCorreo :" + correosUserConcurso1[i]
+                        + "\n\nEl participante se encuentra inscrito en el concurso: " + concursosUser1[0]);
+
+            } else {
+
+                resultado = false;
+
+            }
+
+        }
+
+    }
 }
