@@ -4,6 +4,7 @@
  */
 package final_proyect;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -18,6 +19,8 @@ public class Final_Proyect {
     static int[] cantidadesMax = new int[3];//Se crea este array para almacenar los limites de usuarios de cada concurso
     static String[] concursosActivos = new String[]{"Inactivo", "Inactivo", "Inactivo"};
     static String[] nombresConcursos = new String[]{"Sin nombre", "Sin nombre", "Sin nombre"};
+    static int[] cupos = new int[3];
+    static double[] porcentajeOcupacion = new double[]{0, 0, 0};
     ////Concursos
 
     ////UsuariosAtributosConcurso1
@@ -65,6 +68,7 @@ public class Final_Proyect {
         /////nombre, cedula, edad, estrato, direccion, telefono, genero y correo
         Scanner sc = new Scanner(System.in);
         Random ra = new Random();
+        DecimalFormat DecimalFormat = new DecimalFormat(" #% ");
 
         System.out.println("Bienvenido al manager de concursos");
 
@@ -76,6 +80,7 @@ public class Final_Proyect {
                     + "2.Registrar usuario\n"
                     + "3.Status\n"
                     + "4.Administrar usuario\n"
+                    + "5.Para determinar ganador\n"
                     + "0.Para terminar ejecucion");
 
             inputOptionUser = sc.nextInt();
@@ -102,6 +107,7 @@ public class Final_Proyect {
                         String inputnombreConcurso = sc.nextLine();
 
                         cantidadesMax[i] = inputCantidadUsers;//////Resgistrar Cantidad Maxima en el Array
+                        cupos[i] = inputCantidadUsers;/////Se registra los cupos (Esto con el fin de calcular el porcentaje de ocupacion)
                         concursosActivos[i] = "Activo";////Activar concurso en el Array
                         nombresConcursos[i] = inputnombreConcurso;////Registrar nombre del concurso en el Array
 
@@ -179,6 +185,7 @@ public class Final_Proyect {
                                             /////////////////////////////////////////////////////////////
                                             System.out.println("Iniciando registro de usuario en concurso: " + nombresConcursos[0] + "...");
                                             int contadorRegistroConcurso1 = 1;
+                                            int asignacionNumeroConcurso1 = 1;
                                             boolean repetirRegistroParticipantes = true;
 
                                             int i = 0;///Contador para controlar la veces en que se repite el ciclo do while
@@ -261,7 +268,7 @@ public class Final_Proyect {
                                                 System.out.println("Participante registrado correctamente :)");
 
                                                 i = contadorRegistroConcurso1++;/////Se procede a sumar al contador
-                                                numeroUsuario = numeroUsuario++;///////Variable para asignar un numero al participante
+                                                numeroUsuario = asignacionNumeroConcurso1 + 1;///////Variable para asignar un numero al participante
                                                 int validarCantidadConcurso1 = cantidadesMax[0] - 1;////Con esta variable validamos si se alcanza el limite de cupos o no
                                                 cantidadesMax[0] = validarCantidadConcurso1;/////Se procede a agregar el cupo disponible al array del concurso
 
@@ -631,8 +638,11 @@ public class Final_Proyect {
 
                             case 1:///Status concurses
 
+                                double ocupacionConcurso1 = cantidadesMax[0] / cupos[0];
                                 System.out.println("Concurso 1\n"
-                                        + "Cupos: " + cantidadesMax[0]
+                                        + "\nCupos maximos: " + cupos[0]
+                                        + "\nCupos disponibles: " + cantidadesMax[0]
+                                        + "\nPorcentaje de ocupacion: " + ocupacionConcurso1
                                         + "\nNombre: " + nombresConcursos[0]
                                         + "\nEstado: " + concursosActivos[0]
                                         + "\nParticipantes " + nombresUserConcurso1.length + "\n\n");
@@ -689,12 +699,131 @@ public class Final_Proyect {
                     System.out.println("\nDigita la cedula del participante\n");
                     String inputBuscarCedula1 = sc.nextLine();
                     String inputBuscarCedula = sc.nextLine();
-                    buscarParticipante(inputBuscarCedula);
+                    String resultadoBusqueda = buscarParticipante(inputBuscarCedula);
+                    System.out.println(resultadoBusqueda);
 
-                    System.out.println("\nQue deseas hacer?\n"
-                            + "1.Editar informacion del participante\n"
-                            + "2.Eliminar participante");
+                    if (resultadoBusqueda != "No se encontró el participante :c") {
 
+                        System.out.println("\nQue deseas hacer?\n"
+                                + "1.Editar informacion del participante\n"
+                                + "2.Eliminar participante\n");
+
+                        int inputOptionEdit = sc.nextInt();
+
+                        switch (inputOptionEdit) {
+
+                            case 1:
+
+                                System.out.println("Modifica el nombre: ");/////////Modificar el nombre
+                                String inputModifUser1 = sc.nextLine();
+                                String inputModifUserNombre = sc.nextLine();
+
+                                boolean validar = true;
+                                System.out.println("Modifica la edad");/////////////Modificar la edad
+
+                                int inputModifUserEdad = 0;
+
+                                while (validar) {//////While para validar si es mayor de edad
+                                    inputModifUserEdad = sc.nextInt();
+                                    if (inputModifUserEdad >= 18) {
+                                        validar = false;
+                                    } else {
+                                        System.out.println("La persona no es mayor de edad >:o\n"
+                                                + "Digita nuevamente la edad");
+                                    }
+
+                                }
+
+                                System.out.println("Modifica el estrato\n"
+                                        + "Solo puede digitar un numero del 1 al 6");/////////////Modificar el estratoPersona
+                                int inputModifUserEstrato = 0;
+                                validar = true;
+
+                                while (validar) {//////While para validar si el estrato esta entre 1 y 6
+                                    inputModifUserEstrato = sc.nextInt();
+                                    if (inputModifUserEstrato >= 1 && inputModifUserEstrato <= 6) {
+                                        validar = false;
+                                    } else {
+                                        System.out.println("Numero fuera de rango >:c\n"
+                                                + "Digita nuevamente el estrato");
+                                    }
+
+                                }
+
+                                System.out.println("Modifica la direccion");//////////Modificar DireccionPersona
+                                String inputModifUserDireccion1 = sc.nextLine();
+                                String inputModifUserDireccion = sc.nextLine();
+
+                                System.out.println("Modifica el telefono");//////////Modificar TelefonoPersona
+
+                                String inputModifUserTefono = sc.nextLine();
+
+                                System.out.println("Modifica el genero");//////////Modificar GeneroPersona
+
+                                String inputModifUserGenero = sc.nextLine();
+
+                                System.out.println("Modifica el correo de la persona");///////Modificar CorreoPersona
+
+                                String inputModifUserCorreo = sc.nextLine();
+
+                                editarUsuario(inputModifUserNombre, inputBuscarCedula, inputModifUserEdad, inputModifUserEstrato, inputModifUserDireccion, inputModifUserTefono, inputModifUserGenero, inputModifUserCorreo);
+
+                                break;
+
+                            case 2:
+
+                                EliminarParticipante(inputBuscarCedula);
+
+                                break;
+
+                        }
+
+                    }
+                    break;
+
+                case 5:///////////////////Determinar ganador en un concurso
+
+                    int inputGanador;
+                    do {
+
+                        System.out.println("Determinar ganador\n"
+                                + "A que concurso desea generar el ganador?\n"
+                                + "1.Concurso " + nombresConcursos[0] + "(" + concursosActivos[0] + ")\n"
+                                + "2.Concurso " + nombresConcursos[1] + "(" + concursosActivos[1] + ")\n"
+                                + "3.Concurso " + nombresConcursos[2] + "(" + concursosActivos[2] + ")\n"
+                                + "0.Para regresar al menu principal");
+
+                        inputGanador = sc.nextInt();
+
+                        switch (inputGanador) {
+
+                            case 1:
+
+                                if (concursosActivos[0] == "Inactivo") {////Primero validamos si esta disponible
+
+                                    System.out.println("\nEste concurso no esta disponible >:c\n");
+
+                                } else {///Si esta disponible se procede al siguiente paso
+                                    System.out.println("Determinado ganador del concurso: " + nombresConcursos[0] + "...");
+                                    int numeroRandomConcurso1 = ra.nextInt(1 - cantidadesMax[0]);
+
+                                    detereminarGanadorConcurso1(numeroRandomConcurso1);
+
+                                }
+
+                                break;
+
+                            case 2:
+
+                                break;
+
+                            case 3:
+
+                                break;
+
+                        }
+
+                    } while (inputGanador != 0);
                     break;
 
                 default:
@@ -764,17 +893,16 @@ public class Final_Proyect {
         return false;
     }
 
-    static void buscarParticipante(String cedula) {
+    static String buscarParticipante(String cedula) {/////////////////////Metodo para buscar los participantes en los concursos
 
-        boolean resultado;
+        boolean resultado = false;
 
         for (int i = 0; i < cedulasUserConcurso1.length; i++) {
 
             if (cedula.equals(cedulasUserConcurso1[i])) {
 
                 resultado = true;
-                System.out.println("Usuario encontrado :D\n");
-                System.out.println("Cedula: " + cedulasUserConcurso1[i]
+                return "Usuario encontrado :D\n"
                         + "\nNombre: " + nombresUserConcurso1[i]
                         + "\nEdad: " + edadesUserConcurso1[i]
                         + "\nEstrato: " + estratosUserConcurso1[i]
@@ -782,7 +910,7 @@ public class Final_Proyect {
                         + "\nTelefono:" + telefonosUserConcurso1[i]
                         + "\nGenero: " + generosUserConcurso1[i]
                         + "\nCorreo :" + correosUserConcurso1[i]
-                        + "\n\nEl participante se encuentra inscrito en el concurso: " + concursosUser1[0]);
+                        + "\n\nEl participante se encuentra inscrito en el concurso: " + concursosUser1[0];
 
             } else {
 
@@ -794,19 +922,18 @@ public class Final_Proyect {
 
         for (int i = 0; i < cedulasUserConcurso2.length; i++) {
 
-            if (cedula.equals(cedulasUserConcurso1[i])) {
+            if (cedula.equals(cedulasUserConcurso2[i])) {
 
                 resultado = true;
-                System.out.println("Usuario encontrado :D\n");
-                System.out.println("Cedula: " + cedulasUserConcurso1[i]
-                        + "\nNombre: " + nombresUserConcurso1[i]
-                        + "\nEdad: " + edadesUserConcurso1[i]
-                        + "\nEstrato: " + estratosUserConcurso1[i]
-                        + "\nDireccion: " + direccionesUserConcurso1[i]
-                        + "\nTelefono:" + telefonosUserConcurso1[i]
-                        + "\nGenero: " + generosUserConcurso1[i]
-                        + "\nCorreo :" + correosUserConcurso1[i]
-                        + "\n\nEl participante se encuentra inscrito en el concurso: " + concursosUser1[0]);
+                return "Usuario encontrado :D\n"
+                        + "\nNombre: " + nombresUserConcurso2[i]
+                        + "\nEdad: " + edadesUserConcurso2[i]
+                        + "\nEstrato: " + estratosUserConcurso2[i]
+                        + "\nDireccion: " + direccionesUserConcurso2[i]
+                        + "\nTelefono:" + telefonosUserConcurso2[i]
+                        + "\nGenero: " + generosUserConcurso2[i]
+                        + "\nCorreo :" + correosUserConcurso2[i]
+                        + "\n\nEl participante se encuentra inscrito en el concurso: " + concursosUser2[0];
 
             } else {
 
@@ -816,5 +943,269 @@ public class Final_Proyect {
 
         }
 
+        for (int i = 0; i < cedulasUserConcurso3.length; i++) {
+
+            if (cedula.equals(cedulasUserConcurso3[i])) {
+
+                resultado = true;
+                return "Usuario encontrado :D\n"
+                        + "\nNombre: " + nombresUserConcurso3[i]
+                        + "\nEdad: " + edadesUserConcurso3[i]
+                        + "\nEstrato: " + estratosUserConcurso3[i]
+                        + "\nDireccion: " + direccionesUserConcurso3[i]
+                        + "\nTelefono:" + telefonosUserConcurso3[i]
+                        + "\nGenero: " + generosUserConcurso3[i]
+                        + "\nCorreo :" + correosUserConcurso3[i]
+                        + "\n\nEl participante se encuentra inscrito en el concurso: " + concursosUser3[0];
+
+            } else {
+
+                resultado = false;
+
+            }
+
+        }
+
+        if (resultado == false) {
+            return "No se encontró el participante :c";
+        }
+
+        return "No se encontró el participante :c";
+
     }
+
+    ////////////////////////Metodo para eliminar el participante
+    static void EliminarParticipante(String cedula) {/////////////////////Metodo para buscar los participantes en los concursos
+
+        boolean resultado = false;
+
+        for (int i = 0; i < cedulasUserConcurso1.length; i++) {
+
+            if (cedula.equals(cedulasUserConcurso1[i])) {
+
+                resultado = true;
+
+                cedulasUserConcurso1[i] = null;
+                nombresUserConcurso1[i] = null;
+                edadesUserConcurso1[i] = 0;
+                estratosUserConcurso1[i] = 0;
+                telefonosUserConcurso1[i] = null;
+                generosUserConcurso1[i] = null;
+                correosUserConcurso1[i] = null;
+                concursosUser1[0] = null;
+
+                System.out.println("Eliminado correctamente");
+
+            } else {
+
+                resultado = false;
+
+            }
+
+        }
+
+        for (int i = 0; i < cedulasUserConcurso2.length; i++) {
+
+            if (cedula.equals(cedulasUserConcurso2[i])) {
+
+                resultado = true;
+
+                cedulasUserConcurso2[i] = null;
+                nombresUserConcurso2[i] = null;
+                edadesUserConcurso2[i] = 0;
+                estratosUserConcurso2[i] = 0;
+                telefonosUserConcurso2[i] = null;
+                generosUserConcurso2[i] = null;
+                correosUserConcurso2[i] = null;
+                concursosUser2[0] = null;
+
+                System.out.println("Eliminado correctamente");
+
+            } else {
+
+                resultado = false;
+
+            }
+
+        }
+
+        for (int i = 0; i < cedulasUserConcurso3.length; i++) {
+
+            if (cedula.equals(cedulasUserConcurso3[i])) {
+
+                resultado = true;
+
+                cedulasUserConcurso3[i] = null;
+                nombresUserConcurso3[i] = null;
+                edadesUserConcurso3[i] = 0;
+                estratosUserConcurso3[i] = 0;
+                telefonosUserConcurso3[i] = null;
+                generosUserConcurso3[i] = null;
+                correosUserConcurso3[i] = null;
+                concursosUser3[0] = null;
+
+                System.out.println("Eliminado correctamente");
+
+            } else {
+
+                resultado = false;
+
+            }
+
+        }
+
+        if (resultado == false) {
+
+        }
+
+    }
+
+    static String editarUsuario(String nombre, String cedula, int edad, int estrato, String direccion, String telefono, String genero, String correo) {
+
+        boolean resultado = false;
+
+        for (int i = 0; i < cedulasUserConcurso1.length; i++) {
+
+            if (cedula.equals(cedulasUserConcurso1[i])) {
+
+                resultado = true;
+
+                nombresUserConcurso1[i] = nombre;
+                edadesUserConcurso1[i] = edad;
+                estratosUserConcurso1[i] = estrato;
+                telefonosUserConcurso1[i] = telefono;
+                generosUserConcurso1[i] = genero;
+                correosUserConcurso1[i] = correo;
+
+                System.out.println("Informacion editada correctamente :D");
+
+            } else {
+
+                resultado = false;
+
+            }
+
+        }
+
+        for (int i = 0; i < cedulasUserConcurso2.length; i++) {
+
+            if (cedula.equals(cedulasUserConcurso2[i])) {
+
+                resultado = true;
+
+                nombresUserConcurso2[i] = nombre;
+                edadesUserConcurso2[i] = edad;
+                estratosUserConcurso2[i] = estrato;
+                telefonosUserConcurso2[i] = telefono;
+                generosUserConcurso2[i] = genero;
+                correosUserConcurso2[i] = correo;
+
+                System.out.println("Informacion editada correctamente :D");
+
+            } else {
+
+                resultado = false;
+
+            }
+
+        }
+
+        for (int i = 0; i < cedulasUserConcurso3.length; i++) {
+
+            if (cedula.equals(cedulasUserConcurso3[i])) {
+
+                resultado = true;
+
+                nombresUserConcurso3[i] = nombre;
+                edadesUserConcurso3[i] = edad;
+                estratosUserConcurso3[i] = estrato;
+                telefonosUserConcurso3[i] = telefono;
+                generosUserConcurso3[i] = genero;
+                correosUserConcurso3[i] = correo;
+
+                return ("Informacion editada correctamente :D");
+
+            } else {
+
+                resultado = false;
+
+            }
+
+        }
+
+        if (resultado == false) {
+
+        }
+
+        return ":c?";
+
+    }
+
+    static void detereminarGanadorConcurso1(int numeroRandom) {
+
+        for (int i = 0; i < cedulasUserConcurso1.length; i++) {
+            if (numerosUserAleatorioConcurso1[i] == 1) {
+                System.out.println("Felicidades al ganador! :D\n"
+                        + "\nNumero: " + numerosUserAleatorioConcurso1[i]
+                        + "\nNombre: " + nombresUserConcurso1[i]
+                        + "\nEdad: " + edadesUserConcurso1[i]
+                        + "\nEstrato: " + estratosUserConcurso1[i]
+                        + "\nDireccion: " + direccionesUserConcurso1[i]
+                        + "\nTelefono:" + telefonosUserConcurso1[i]
+                        + "\nGenero: " + generosUserConcurso1[i]
+                        + "\nCorreo :" + correosUserConcurso1[i]
+                );
+
+            }
+        }
+
+    }
+
+    static void Elminarconcurso1() {
+        for (int i = 0; i < nombres; i++) {
+            
+        }
+        
+    }
+
+    static void detereminarGanadorConcurso2(int numeroRandom) {
+
+        for (int i = 0; i < cedulasUserConcurso2.length; i++) {
+            if (numerosUserAleatorioConcurso2[i] == 1) {
+                System.out.println("Felicidades al ganador! :D\n"
+                        + "\nNumero: " + numerosUserAleatorioConcurso2[i]
+                        + "\nNombre: " + nombresUserConcurso2[i]
+                        + "\nEdad: " + edadesUserConcurso2[i]
+                        + "\nEstrato: " + estratosUserConcurso2[i]
+                        + "\nDireccion: " + direccionesUserConcurso2[i]
+                        + "\nTelefono:" + telefonosUserConcurso2[i]
+                        + "\nGenero: " + generosUserConcurso2[i]
+                        + "\nCorreo :" + correosUserConcurso2[i]
+                );
+
+            }
+        }
+
+    }
+
+    static void detereminarGanadorConcurso3(int numeroRandom) {
+
+        for (int i = 0; i < cedulasUserConcurso3.length; i++) {
+            if (numerosUserAleatorioConcurso3[i] == 1) {
+                System.out.println("Felicidades al ganador! :D\n"
+                        + "\nNumero: " + numerosUserAleatorioConcurso3[i]
+                        + "\nNombre: " + nombresUserConcurso3[i]
+                        + "\nEdad: " + edadesUserConcurso3[i]
+                        + "\nEstrato: " + estratosUserConcurso3[i]
+                        + "\nDireccion: " + direccionesUserConcurso3[i]
+                        + "\nTelefono:" + telefonosUserConcurso3[i]
+                        + "\nGenero: " + generosUserConcurso3[i]
+                        + "\nCorreo :" + correosUserConcurso3[i]
+                );
+
+            }
+        }
+
+    }
+
 }
