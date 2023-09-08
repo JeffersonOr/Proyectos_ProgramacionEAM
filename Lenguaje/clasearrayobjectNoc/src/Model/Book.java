@@ -19,6 +19,12 @@ public class Book {
         this.nombreAutor = nombreAutor;
     }
 
+    public Book(int isbn) {
+        this.isbn = isbn;
+    }
+    
+    
+
     public int getIsbn() {
         return isbn;
     }
