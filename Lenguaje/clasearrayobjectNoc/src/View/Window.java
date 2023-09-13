@@ -225,10 +225,7 @@ public class Window extends javax.swing.JFrame {
         if (respuesta) {
 
             JOptionPane.showMessageDialog(null, "Se guardo");
-            txtNombre.setText(null);
-            txtIsbn.setText(null);
-            txtAutor.setText(null);
-            
+            cleanSpaces();
 
         } else {
 
@@ -247,15 +244,21 @@ public class Window extends javax.swing.JFrame {
         if (book != null) {
             txtNombre.setText(book.getNombre());
             txtAutor.setText(book.getNombreAutor());
-        }else{
-        
-        JOptionPane.showMessageDialog(null, "No se encontró el libro");
-        
+        } else {
+
+            JOptionPane.showMessageDialog(null, "No se encontró el libro");
+
         }
-    
 
 
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void cleanSpaces() { ////Metodos para limpiar los campos de la clase buscar
+        txtNombre.setText(null);
+        txtIsbn.setText(null);
+        txtAutor.setText(null);
+    }
+
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
@@ -291,22 +294,19 @@ public class Window extends javax.swing.JFrame {
         String autorDelete = txtAutor.getText();
         Book book = new Book(isbnDelete);
         Boolean respuesta = controllerBook.eliminarlibro2(book);
-        
+
         if (respuesta) {
-            
-            
+
             JOptionPane.showMessageDialog(null, "Se eliminó el libro correctamente");
-            
+
             txtNombre.setText(null);
             txtIsbn.setText(null);
             txtAutor.setText(null);
-        }else{
-        
-        JOptionPane.showMessageDialog(null, "No se eliminó >:o");
-        
-        }
+        } else {
 
-        
+            JOptionPane.showMessageDialog(null, "No se eliminó >:o");
+
+        }
 
 
     }//GEN-LAST:event_btnEliminarActionPerformed
