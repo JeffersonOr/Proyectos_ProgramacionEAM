@@ -221,7 +221,7 @@ public class Window extends javax.swing.JFrame {
         String nombre = txtNombre.getText();
         String autor = txtAutor.getText();
         Book book = new Book(isbn, nombre, autor);
-        boolean respuesta = controllerBook.saveBook(book);
+        boolean respuesta = controllerBook.guardarLibroLista(book);
         if (respuesta) {
 
             JOptionPane.showMessageDialog(null, "Se guardo");
