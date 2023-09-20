@@ -4,10 +4,20 @@
  */
 package Controller;
 
+import Model.Programa;
+import java.util.ArrayList;
+
 /**
  *
  * @author jeff
  */
 public class ControllerPrograma {
-    
+
+    private ArrayList<Programa> listPrograma;
+
+    public ControllerPrograma() {
+
+        listPrograma = new ArrayList<>();
+    }
+
 }

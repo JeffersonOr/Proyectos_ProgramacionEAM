@@ -46,7 +46,6 @@ public class ControllerBook {
                 if (books[i] == null) {
                     books[i] = book;
                     return true;
-
                 }
 
             }
