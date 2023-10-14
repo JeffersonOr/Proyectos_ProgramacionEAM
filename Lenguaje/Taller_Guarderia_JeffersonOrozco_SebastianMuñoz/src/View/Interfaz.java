@@ -3,6 +3,8 @@ package View;
 import Controller.ControllerMascota;
 import Model.Mascota;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -15,6 +17,7 @@ import javax.swing.JOptionPane;
 public class Interfaz extends javax.swing.JFrame {
 
     private ControllerMascota controllerMascota;
+    private DefaultTableModel modelo;
 
     /**
      * Creates new form Interfaz
@@ -22,8 +25,18 @@ public class Interfaz extends javax.swing.JFrame {
     public Interfaz() {
 
         controllerMascota = new ControllerMascota();
+        setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         setLocationRelativeTo(this);
         initComponents();
+        
+           DefaultTableModel modelo = new DefaultTableModel();
+        JTable miTabla = new JTable();
+        String[] columnNames = {"Id", "Nombre Mascota", "Edad", "Raza", "Genero"};
+        modelo.setColumnIdentifiers(columnNames);
+        
+
+
+
     }
 
     /**
@@ -50,8 +63,17 @@ public class Interfaz extends javax.swing.JFrame {
         txtEdad = new javax.swing.JTextField();
         txtRaza = new javax.swing.JTextField();
         txtSexo = new javax.swing.JTextField();
+        btn_Cantidad_Hembras = new javax.swing.JButton();
+        btnBuscarTabla = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Guarderia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
@@ -123,36 +145,69 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        btn_Cantidad_Hembras.setText("Ver cantidad hembras");
+        btn_Cantidad_Hembras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Cantidad_HembrasActionPerformed(evt);
+            }
+        });
+
+        btnBuscarTabla.setText("Buscar2");
+        btnBuscarTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarTablaActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnModificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminar))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCodigo)
+                            .addComponent(lblNombre)
+                            .addComponent(lblEdad)
+                            .addComponent(lblRaza)
+                            .addComponent(lblSexo))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnGuardar)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnBuscar)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                            .addComponent(txtNombre)
-                            .addComponent(txtEdad)
-                            .addComponent(txtRaza)
-                            .addComponent(txtSexo))))
-                .addContainerGap(39, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCodigo)
-                    .addComponent(lblNombre)
-                    .addComponent(lblEdad)
-                    .addComponent(lblRaza)
-                    .addComponent(lblSexo))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnGuardar)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnBuscar)
+                                    .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                    .addComponent(txtNombre)
+                                    .addComponent(txtEdad)
+                                    .addComponent(txtRaza)
+                                    .addComponent(txtSexo)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnModificar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEliminar)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnBuscarTabla)
+                                .addGap(38, 38, 38)
+                                .addComponent(btn_Cantidad_Hembras))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,15 +232,21 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSexo)
                     .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnBuscar))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificar)
-                    .addComponent(btnEliminar))
-                .addGap(13, 13, 13))
+                    .addComponent(btnEliminar)
+                    .addComponent(btn_Cantidad_Hembras)
+                    .addComponent(btnBuscarTabla))
+                .addGap(23, 23, 23))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -195,7 +256,7 @@ public class Interfaz extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,7 +343,7 @@ public class Interfaz extends javax.swing.JFrame {
         String raza = txtRaza.getText();
         String sexo = txtSexo.getText();
 
-        Mascota mascota = new Mascota(codigo, nombreMascota, edadMeses, raza, raza);
+        Mascota mascota = new Mascota(codigo, nombreMascota, edadMeses, raza, sexo);
 
         Boolean respuesta = controllerMascota.modificarMascota(mascota);
 
@@ -326,6 +387,25 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigoActionPerformed
 
+    private void btn_Cantidad_HembrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Cantidad_HembrasActionPerformed
+        // TODO add your handling code here:
+
+        Cantidades_Mascotas formCantidadMascotas = new Cantidades_Mascotas();
+        formCantidadMascotas.setVisible(true);
+    }//GEN-LAST:event_btn_Cantidad_HembrasActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnBuscarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTablaActionPerformed
+        
+        controllerMascota.crearTabla();
+
+    }//GEN-LAST:event_btnBuscarTablaActionPerformed
+
+
+
     /**
      * @param args the command line arguments
      */
@@ -363,10 +443,14 @@ public class Interfaz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnBuscarTabla;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btn_Cantidad_Hembras;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblEdad;
     private javax.swing.JLabel lblNombre;
