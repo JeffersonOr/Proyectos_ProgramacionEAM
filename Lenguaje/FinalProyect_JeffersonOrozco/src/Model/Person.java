@@ -8,7 +8,7 @@ package Model;
  *
  * @author Usuario
  */
-<<<<<<< HEAD
+
 public class Person {
 
     protected String namePerson;
@@ -64,18 +64,6 @@ public class Person {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
-    
-    
-=======
-public abstract class Person {
-
-    protected String namePerson;
-    protected int idPerson;
-
->>>>>>> 8a3df5f649480d253cf694793cd4e89078479f6a
-
 
 
 }
