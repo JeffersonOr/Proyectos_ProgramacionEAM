@@ -6,6 +6,7 @@ package Controllers;
 
 
 import Model.User;
+import Singleton.Singleton;
 import java.util.ArrayList;
 
 
@@ -20,7 +21,7 @@ public class ControllerUsers {
 
     public ControllerUsers() {
 
-        listUsers = new ArrayList<>();
+        listUsers = Singleton.getInstance().getListUser();
         
 
     }
@@ -31,6 +32,7 @@ public class ControllerUsers {
 
         if (aux == null) {
             listUsers.add(user);
+            Singleton.getInstance().writeObject(listUsers);
             return true;
         }
 
@@ -41,8 +43,9 @@ public class ControllerUsers {
     public User readUsers(int code) {
         
         for (int i = 0; i < listUsers.size(); i++) {
-            if (code==listUsers.get(i).getIdPerson()) {
+            if (code==listUsers.get(i).getIdPerson()) {                
                 return listUsers.get(i);
+                
             }
         }
         return null;
@@ -59,6 +62,7 @@ public class ControllerUsers {
                 listUsers.get(i).setRole(user.getRole());
                 listUsers.get(i).setPassword(user.getPassword());
                 listUsers.get(i).setNameUser(user.getNameUser());
+                Singleton.getInstance().writeObject(listUsers);
                 return true;
             }
         }
@@ -71,6 +75,7 @@ public class ControllerUsers {
         for (int i = 0; i < listUsers.size(); i++) {
             if (aux != null) {
                 listUsers.remove(i);
+                Singleton.getInstance().writeObject(listUsers);
             }
         }
         return false;

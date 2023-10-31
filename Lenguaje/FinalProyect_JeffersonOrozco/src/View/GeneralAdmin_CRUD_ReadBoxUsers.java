@@ -4,9 +4,7 @@
  */
 package View;
 
-import Controllers.ControllerUsers;
-import Model.Person;
-import javax.swing.JOptionPane;
+
 import javax.swing.JTextField;
 
 /**
@@ -15,14 +13,14 @@ import javax.swing.JTextField;
  */
 public class GeneralAdmin_CRUD_ReadBoxUsers extends javax.swing.JFrame {
     
-    ControllerUsers controllerUsers; 
+
 
     /**
      * Creates new form GeneralAdmin_ReadBoxUsers
      */
     public GeneralAdmin_CRUD_ReadBoxUsers() {
         
-        controllerUsers = new ControllerUsers();
+        
         initComponents();
         setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
@@ -84,23 +82,7 @@ public class GeneralAdmin_CRUD_ReadBoxUsers extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_readUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_readUserActionPerformed
-        ViewGeneralAdmin formViewGeneralAdmin = new ViewGeneralAdmin();
-        
-        int cc = Integer.parseInt(txt_ReadUser.getText());
-        Person person = controllerUsers.readUsers(cc);
-        if (person != null) {
-            formViewGeneralAdmin.getTxt_idPerson().setText(Integer.toString(person.getIdPerson()));
-            formViewGeneralAdmin.getTxt_NamePerson().setText(person.getNamePerson());
-            formViewGeneralAdmin.getTxt_LastNamePerson().setText(person.getLastNamePerson());
-            formViewGeneralAdmin.getTxt_PasswordUser().setText(person.getPassword());
-            formViewGeneralAdmin.getTxt_UserPerson().setText(person.getUser());
-            this.setVisible(false);
 
-        }else {
-
-            JOptionPane.showMessageDialog(null, "El usuario no se encuentra registrado :c");
-
-        }
         
         
     }//GEN-LAST:event_btn_readUserActionPerformed
@@ -122,20 +104,20 @@ public class GeneralAdmin_CRUD_ReadBoxUsers extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GeneralAdmin_ReadBoxUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneralAdmin_CRUD_ReadBoxUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GeneralAdmin_ReadBoxUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneralAdmin_CRUD_ReadBoxUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GeneralAdmin_ReadBoxUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneralAdmin_CRUD_ReadBoxUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GeneralAdmin_ReadBoxUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneralAdmin_CRUD_ReadBoxUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GeneralAdmin_ReadBoxUsers().setVisible(true);
+                new GeneralAdmin_CRUD_ReadBoxUsers().setVisible(true);
             }
         });
     }

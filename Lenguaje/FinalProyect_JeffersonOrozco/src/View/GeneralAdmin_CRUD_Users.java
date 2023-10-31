@@ -5,10 +5,9 @@
 package View;
 
 import Controllers.ControllerUsers;
-import Model.Person;
 import Model.User;
+import Singleton.Singleton;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,32 +16,54 @@ import javax.swing.table.DefaultTableModel;
  * @author jeff
  */
 public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
-    
+
     /////////////////////////////////////
     private String namePerson;
     private String lastNamePerson;
     private int idPerson;
     private String role;
     private String password;
-    private String user;
+    private String nameUser;
     /////////////////////////////////////
-    
-    
+
+    ////////////////////////////////////
+    User user;
+    ///////////////////////////////////
+
     /////////////////////////////////////
-    Person person;
     DefaultTableModel modelTableUsers;
     private ControllerUsers controllerUsers;
     /////////////////////////////////////////
 
-    
-    
-    
     public GeneralAdmin_CRUD_Users() {
-        modelTableUsers = new DefaultTableModel();///Table
-        controllerUsers = new ControllerUsers();
+
         initComponents();
         setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
         this.setExtendedState(MAXIMIZED_BOTH);
+
+        ////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////
+        ////////////////////////////////////////////////////
+        
+        ///////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////////
+        modelTableUsers = new DefaultTableModel();///Table
+        controllerUsers = new ControllerUsers();
+        /////////////////////////////////////////////////////////
+
+    }
+
+    private void createAccess() {
+        namePerson = txt_NamePerson.getText();
+        lastNamePerson = txt_LastNamePerson.getText();
+        idPerson = Integer.parseInt(txt_idPerson.getText());
+        role = cb_RoleUser.getSelectedItem().toString();
+        password = txt_PasswordUser.getText();
+        nameUser = txt_UserPerson.getText();
+        
+        user = new User(nameUser, password, idPerson, namePerson, lastNamePerson, role);
+
     }
 
     /**
@@ -345,26 +366,20 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
 
     private void btn_CreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CreateUserActionPerformed
         /////////////////////////////////////////////////////////////////////////////////////---------------->CreateUsers
-        namePerson = txt_NamePerson.getText();
-        lastNamePerson = txt_LastNamePerson.getText();
-        idPerson = Integer.parseInt(txt_idPerson.getText());
-        role = cb_RoleUser.getSelectedItem().toString();
-        password = txt_PasswordUser.getText();
-        user = txt_UserPerson.getText();
-        User user = new User(namePerson, lastNamePerson, idPerson, role, password, nameuser);
-        boolean answer = controllerUsers.createUsers(person);
+        createAccess();
+        boolean answer = controllerUsers.createUsers(user);
         if (answer) {
-
-            JOptionPane.showMessageDialog(null, "El Usuario: " + user + " se registró correctamente como " + role);
+            
+            JOptionPane.showMessageDialog(null, "El Usuario: " + nameUser + " se registró correctamente como " + role);
 
             modelTableUsers = (DefaultTableModel) tbl_tableUsers.getModel();
             Object[] ob = new Object[6];
-            ob[0] = person.getNamePerson();
-            ob[1] = person.getLastNamePerson();
-            ob[2] = person.getIdPerson();
-            ob[3] = person.getRole();
-            ob[4] = person.getUser();
-            ob[5] = person.getPassword();
+            ob[0] = user.getNamePerson();
+            ob[1] = user.getLastNamePerson();
+            ob[2] = user.getIdPerson();
+            ob[3] = user.getRole();
+            ob[4] = user.getNameUser();
+            ob[5] = user.getPassword();
             modelTableUsers.addRow(ob);
             tbl_tableUsers.setModel(modelTableUsers);
 
@@ -387,7 +402,7 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
         String password = txt_PasswordUser.getText();
         String user = txt_UserPerson.getText();*/
 
-        GeneralAdmin_ReadBoxUsers formGeneralAdmin_ReadBoxUsers = new GeneralAdmin_ReadBoxUsers();
+        GeneralAdmin_CRUD_ReadBoxUsers formGeneralAdmin_ReadBoxUsers = new GeneralAdmin_CRUD_ReadBoxUsers();
         formGeneralAdmin_ReadBoxUsers.setVisible(true);
 
         /*formGeneralAdmin_ReadBoxUsers.getTxt_ReadUser().setText(Integer.toString(idPerson));
@@ -408,14 +423,8 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_ReadUserActionPerformed
 
     private void btn_UpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UpdateUserActionPerformed
-        String namePerson = txt_NamePerson.getText();
-        String lastNamePerson = txt_LastNamePerson.getText();
-        int idPerson = Integer.parseInt(txt_idPerson.getText());
-        String role = cb_RoleUser.getSelectedItem().toString();
-        String password = txt_PasswordUser.getText();
-        String user = txt_UserPerson.getText();
-        Person person = new Person(namePerson, lastNamePerson, idPerson, role, password, user);
-        boolean answer = controllerUsers.updateUsers(person);
+
+        boolean answer = controllerUsers.updateUsers(user);
         if (answer) {
 
             JOptionPane.showMessageDialog(null, "Se modificó correctamente c:");
@@ -429,14 +438,8 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_UpdateUserActionPerformed
 
     private void btn_DeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteUserActionPerformed
-        String namePerson = txt_NamePerson.getText();
-        String lastNamePerson = txt_LastNamePerson.getText();
-        int idPerson = Integer.parseInt(txt_idPerson.getText());
-        String role = cb_RoleUser.getSelectedItem().toString();
-        String password = txt_PasswordUser.getText();
-        String user = txt_UserPerson.getText();
-        User user = new User(namePerson, lastNamePerson, idPerson, role, password, user);
-        boolean answer = controllerUsers.deleteUsers(person);
+
+        boolean answer = controllerUsers.deleteUsers(user);
         if (answer) {
 
             JOptionPane.showMessageDialog(null, "Se elimino correctamente");
@@ -488,13 +491,13 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewGeneralAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneralAdmin_CRUD_Users.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewGeneralAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneralAdmin_CRUD_Users.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewGeneralAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneralAdmin_CRUD_Users.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewGeneralAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneralAdmin_CRUD_Users.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

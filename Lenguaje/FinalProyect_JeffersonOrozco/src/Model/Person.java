@@ -8,7 +8,7 @@ package Model;
  *
  * @author Usuario
  */
-abstract public class Person {
+public abstract class  Person {
 
     protected int idPerson;
     protected String namePerson;
@@ -21,5 +21,39 @@ abstract public class Person {
         this.lastNamePerson = lastNamePerson;
         this.role = role;
     }
+
+    public int getIdPerson() {
+        return idPerson;
+    }
+
+    public void setIdPerson(int idPerson) {
+        this.idPerson = idPerson;
+    }
+
+    public String getNamePerson() {
+        return namePerson;
+    }
+
+    public void setNamePerson(String namePerson) {
+        this.namePerson = namePerson;
+    }
+
+    public String getLastNamePerson() {
+        return lastNamePerson;
+    }
+
+    public void setLastNamePerson(String lastNamePerson) {
+        this.lastNamePerson = lastNamePerson;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+    
+    
 
 }
