@@ -37,20 +37,15 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
 
     public GeneralAdmin_CRUD_Users() {
 
-        initComponents();
-        setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
-        this.setExtendedState(MAXIMIZED_BOTH);
-
-        ////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////
-        ////////////////////////////////////////////////////
-        
-        ///////////////////////////////////////////////////
-
+      
         //////////////////////////////////////////////////////////
         modelTableUsers = new DefaultTableModel();///Table
         controllerUsers = new ControllerUsers();
         /////////////////////////////////////////////////////////
+
+        initComponents();
+        setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
+        this.setExtendedState(MAXIMIZED_BOTH);
 
     }
 
@@ -61,7 +56,7 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
         role = cb_RoleUser.getSelectedItem().toString();
         password = txt_PasswordUser.getText();
         nameUser = txt_UserPerson.getText();
-        
+
         user = new User(nameUser, password, idPerson, namePerson, lastNamePerson, role);
 
     }
@@ -186,7 +181,7 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_NamePerson, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_LastNamePerson, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -366,10 +361,10 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
 
     private void btn_CreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CreateUserActionPerformed
         /////////////////////////////////////////////////////////////////////////////////////---------------->CreateUsers
-        createAccess();
+        createAccess();///////Este metodo se utiliza para darle identidad a la variables de entrada
         boolean answer = controllerUsers.createUsers(user);
         if (answer) {
-            
+
             JOptionPane.showMessageDialog(null, "El Usuario: " + nameUser + " se registró correctamente como " + role);
 
             modelTableUsers = (DefaultTableModel) tbl_tableUsers.getModel();

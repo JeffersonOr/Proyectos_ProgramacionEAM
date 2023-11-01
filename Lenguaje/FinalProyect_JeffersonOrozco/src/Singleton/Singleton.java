@@ -4,6 +4,10 @@
  */
 package Singleton;
 
+import Controllers.ControllerAirlines;
+import Controllers.ControllerFlights;
+import Controllers.ControllerPlanes;
+import Controllers.ControllerUsers;
 import Model.Airline;
 import Model.Maintenance;
 import Model.Plane;
@@ -24,14 +28,24 @@ public class Singleton {
 
     private static Singleton INSTANCE = new Singleton();
 
+    //////////////////////////////////////////Lists
     private ArrayList<User> listUsers;
     private ArrayList<Airline> listAirlines;
     private ArrayList<flight> listflights;
     private ArrayList<Plane> listPlanes;
     private ArrayList<Maintenance> listMaintenance;
-
+    //////////////////////////////////////////Lists
+    
+    //////////////////////////////////////////Controllers
+    private ControllerUsers controllerUsers;
+    private ControllerAirlines controllerAirlines;
+    private ControllerFlights controllerFlights;
+    private ControllerPlanes controllerPlanes;
+    /////////////////////////////////////////Controllers
+    
     public Singleton() {
         listUsers = read();
+//        controllerUsers = readControllerUsers();
     }
 
     public static Singleton getInstance() {
@@ -46,6 +60,12 @@ public class Singleton {
         return this.listAirlines;
     }
 
+//    public ControllerUsers getControllerUser() {
+//
+//        return this.controllerUsers;
+//    }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////ListaUsuarios
     public void writeObject(ArrayList<User> listUsers) {//////////Metodo para hacer cambios
         try {
             FileOutputStream file
@@ -71,4 +91,32 @@ public class Singleton {
         }
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////ListaUsuarios
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////ControladorUsuarios
+//    public void writeObject(ControllerUsers controllerUsers) {//////////Metodo para hacer cambios
+//        try {
+//            FileOutputStream file
+//                    = new FileOutputStream("controllerUsers.dat");
+//            ObjectOutputStream writer
+//                    = new ObjectOutputStream(file);
+//            writer.writeObject(controllerUsers);
+//        } catch (IOException ex) {
+//            //ex.printStackTrace();
+//        }
+//    }
+//
+//    public ControllerUsers readControllerUsers() {///////////////Metodo para actualizar
+//        try {
+//            FileInputStream file
+//                    = new FileInputStream("controllerUsers.dat");
+//            ObjectInputStream reader
+//                    = new ObjectInputStream(file);
+//            return (ControllerUsers) reader.readObject();
+//        } catch (IOException | ClassNotFoundException ex) {
+//            //ex.printStackTrace();
+//            return new ControllerUsers();
+//        }
+//    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////ControladorUsuarios
 }

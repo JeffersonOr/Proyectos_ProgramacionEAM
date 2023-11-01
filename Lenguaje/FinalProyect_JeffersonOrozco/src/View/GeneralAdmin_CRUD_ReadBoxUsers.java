@@ -4,26 +4,43 @@
  */
 package View;
 
-
+import Controllers.ControllerUsers;
+import Model.User;
 import javax.swing.JTextField;
+import Singleton.Singleton;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Usuario
  */
 public class GeneralAdmin_CRUD_ReadBoxUsers extends javax.swing.JFrame {
-    
+
+    private ControllerUsers controllerUsers;
+
+    ////////////////////////////////
+
+    private int idPerson;
 
 
     /**
      * Creates new form GeneralAdmin_ReadBoxUsers
      */
     public GeneralAdmin_CRUD_ReadBoxUsers() {
-        
-        
+
+        //controllerUsers = Singleton.getInstance().getControllerUser();
+        controllerUsers = new ControllerUsers();
         initComponents();
         setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
+
+    private void createAccess() {
+
+        idPerson = Integer.parseInt(txt_ReadUser.getText());
+
+    }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,9 +99,26 @@ public class GeneralAdmin_CRUD_ReadBoxUsers extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_readUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_readUserActionPerformed
+        createAccess();
+        User answer = controllerUsers.readUsers(idPerson);
+        if (answer != null) {
 
-        
-        
+            GeneralAdmin_CRUD_Users generalAdmin_CRUD_Users = new GeneralAdmin_CRUD_Users();
+
+            generalAdmin_CRUD_Users.getTxt_NamePerson().setText(answer.getNamePerson());
+            generalAdmin_CRUD_Users.getTxt_LastNamePerson().setText(answer.getLastNamePerson());
+            generalAdmin_CRUD_Users.getTxt_PasswordUser().setText(answer.getPassword());
+            generalAdmin_CRUD_Users.getTxt_UserPerson().setText(answer.getNameUser());
+            generalAdmin_CRUD_Users.getTxt_idPerson().setText(Integer.toString(answer.getIdPerson()));
+            this.setVisible(false);
+
+        } else {
+
+            JOptionPane.showMessageDialog(null, "El usuario: " + idPerson + " no se encuentra registrado :c");
+
+        }
+
+
     }//GEN-LAST:event_btn_readUserActionPerformed
 
     /**
