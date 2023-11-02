@@ -11,12 +11,18 @@ package Model;
 public class User extends Person {
     protected String nameUser;
     protected String password;
+    protected String role;
 
-    public User(String nameUser, String password, int idPerson, String namePerson, String lastNamePerson, String role) {
-        super(idPerson, namePerson, lastNamePerson, role);
+    public User(String nameUser, String password, String role, int idPerson, String namePerson, String lastNamePerson) {
+        super(idPerson, namePerson, lastNamePerson);
         this.nameUser = nameUser;
         this.password = password;
+        this.role = role;
     }
+
+
+
+
 
     public String getNameUser() {
         return nameUser;

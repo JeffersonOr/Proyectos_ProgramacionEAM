@@ -11,10 +11,12 @@ package Model;
 public class LogisticsEmployee extends User{
     private String position;
 
-    public LogisticsEmployee(String position, String nameUser, String password, int idPerson, String namePerson, String lastNamePerson, String role) {
-        super(nameUser, password, idPerson, namePerson, lastNamePerson, role);
+    public LogisticsEmployee(String position, String nameUser, String password, String role, int idPerson, String namePerson, String lastNamePerson) {
+        super(nameUser, password, role, idPerson, namePerson, lastNamePerson);
         this.position = position;
     }
+
+
 
     public String getPosition() {
         return position;

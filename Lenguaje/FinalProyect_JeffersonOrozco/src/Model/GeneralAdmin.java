@@ -12,10 +12,12 @@ public class GeneralAdmin extends User {
     
     private String position;
 
-    public GeneralAdmin(String position, String namePerson, String lastNamePerson, int idPerson, String role, String password, String user) {
-        super(namePerson, lastNamePerson, idPerson, role, password, user);
+    public GeneralAdmin(String position, String nameUser, String password, String role, int idPerson, String namePerson, String lastNamePerson) {
+        super(nameUser, password, role, idPerson, namePerson, lastNamePerson);
         this.position = position;
     }
+
+
 
     public String getPosition() {
         return position;

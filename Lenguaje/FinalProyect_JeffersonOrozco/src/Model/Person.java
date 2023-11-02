@@ -13,14 +13,16 @@ public abstract class  Person {
     protected int idPerson;
     protected String namePerson;
     protected String lastNamePerson;
-    protected String role;
 
-    public Person(int idPerson, String namePerson, String lastNamePerson, String role) {
+    public Person(int idPerson, String namePerson, String lastNamePerson) {
         this.idPerson = idPerson;
         this.namePerson = namePerson;
         this.lastNamePerson = lastNamePerson;
-        this.role = role;
     }
+    
+    
+
+
 
     public int getIdPerson() {
         return idPerson;
@@ -46,13 +48,7 @@ public abstract class  Person {
         this.lastNamePerson = lastNamePerson;
     }
 
-    public String getRole() {
-        return role;
-    }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
     
     
 

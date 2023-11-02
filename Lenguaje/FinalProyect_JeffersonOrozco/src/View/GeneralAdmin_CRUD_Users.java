@@ -57,7 +57,7 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
         password = txt_PasswordUser.getText();
         nameUser = txt_UserPerson.getText();
 
-        user = new User(nameUser, password, idPerson, namePerson, lastNamePerson, role);
+        user = new User(nameUser, password, role, idPerson, namePerson, lastNamePerson);
 
     }
 
@@ -130,7 +130,7 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel9.setText("Tipo");
 
-        cb_RoleUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empleado logitica","Administrador aerolineas" }));
+        cb_RoleUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empleado logistica","Administrador aerolineas" }));
         cb_RoleUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_RoleUserActionPerformed(evt);

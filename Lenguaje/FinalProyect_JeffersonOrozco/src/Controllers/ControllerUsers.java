@@ -4,12 +4,9 @@
  */
 package Controllers;
 
-
 import Model.User;
 import Singleton.Singleton;
 import java.util.ArrayList;
-
-
 
 /**
  *
@@ -22,7 +19,6 @@ public class ControllerUsers {
     public ControllerUsers() {
 
         listUsers = Singleton.getInstance().getListUser();
-        
 
     }
 
@@ -41,11 +37,11 @@ public class ControllerUsers {
 
     ///////////////Read Users
     public User readUsers(int code) {
-        
+
         for (int i = 0; i < listUsers.size(); i++) {
-            if (code==listUsers.get(i).getIdPerson()) {                
+            if (code == listUsers.get(i).getIdPerson()) {
                 return listUsers.get(i);
-                
+
             }
         }
         return null;
@@ -54,7 +50,7 @@ public class ControllerUsers {
     /////////////Update Users
     public boolean updateUsers(User user) {
         User aux = readUsers(user.getIdPerson());
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < listUsers.size(); i++) {
             if (aux != null) {
                 listUsers.get(i).setIdPerson(user.getIdPerson());
                 listUsers.get(i).setLastNamePerson(user.getLastNamePerson());
@@ -76,13 +72,21 @@ public class ControllerUsers {
             if (aux != null) {
                 listUsers.remove(i);
                 Singleton.getInstance().writeObject(listUsers);
+                return true;
             }
         }
         return false;
     }
 
-
-
-   
+    ///////////Confirm sign in
+    public boolean confirmSignIn(String nameUser, String password, String role) {
+        for (int i = 0; i < listUsers.size(); i++) {
+            if(listUsers.get(i).getNameUser().equals(nameUser) && listUsers.get(i).getPassword().equals(password) && listUsers.get(i).getRole().equals(role)){
+            
+            return true;
+            }
+        }
+        return false;
+    }
 
 }

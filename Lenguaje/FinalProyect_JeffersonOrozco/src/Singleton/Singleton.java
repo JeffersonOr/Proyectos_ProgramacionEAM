@@ -9,6 +9,7 @@ import Controllers.ControllerFlights;
 import Controllers.ControllerPlanes;
 import Controllers.ControllerUsers;
 import Model.Airline;
+import Model.AirlineEmployee;
 import Model.Maintenance;
 import Model.Plane;
 import Model.User;
@@ -33,7 +34,8 @@ public class Singleton {
     private ArrayList<Airline> listAirlines;
     private ArrayList<flight> listflights;
     private ArrayList<Plane> listPlanes;
-    private ArrayList<Maintenance> listMaintenance;
+    private ArrayList<Maintenance> listMaintenances;
+    private ArrayList<AirlineEmployee> airlineEmployees;
     //////////////////////////////////////////Lists
     
     //////////////////////////////////////////Controllers
@@ -45,6 +47,8 @@ public class Singleton {
     
     public Singleton() {
         listUsers = read();
+        airlineEmployees = readlistAirlineEmployees();
+        listPlanes = readListPlanes();
 //        controllerUsers = readControllerUsers();
     }
 
@@ -59,6 +63,14 @@ public class Singleton {
     public ArrayList<Airline> getListAirline() {
         return this.listAirlines;
     }
+    
+      public ArrayList<AirlineEmployee> getListAirlineEmployee() {
+        return this.airlineEmployees;
+    }
+          public ArrayList<Plane> getListPlane() {
+        return this.listPlanes;
+    }
+    
 
 //    public ControllerUsers getControllerUser() {
 //
@@ -90,6 +102,59 @@ public class Singleton {
             return new ArrayList<>();
         }
     }
+    
+    
+        public void writeObjectairlineEmployees(ArrayList<AirlineEmployee> airlineEmployees) {//////////Metodo para hacer cambios
+        try {
+            FileOutputStream file
+                    = new FileOutputStream("airlineEmployees.dat");
+            ObjectOutputStream writer
+                    = new ObjectOutputStream(file);
+            writer.writeObject(airlineEmployees);
+        } catch (IOException ex) {
+            //ex.printStackTrace();
+        }
+    }
+
+    private ArrayList<AirlineEmployee> readlistAirlineEmployees() {///////////////Metodo para actualizar
+        try {
+            FileInputStream file
+                    = new FileInputStream("airlineEmployees.dat");
+            ObjectInputStream reader
+                    = new ObjectInputStream(file);
+            return (ArrayList<AirlineEmployee>) reader.readObject();
+        } catch (IOException | ClassNotFoundException ex) {
+            //ex.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+    
+            public void writeObjectListPlanes(ArrayList<Plane> listPlanes) {//////////Metodo para hacer cambios
+        try {
+            FileOutputStream file
+                    = new FileOutputStream("Planes.dat");
+            ObjectOutputStream writer
+                    = new ObjectOutputStream(file);
+            writer.writeObject(listPlanes);
+        } catch (IOException ex) {
+            //ex.printStackTrace();
+        }
+    }
+
+    private ArrayList<Plane> readListPlanes() {///////////////Metodo para actualizar
+        try {
+            FileInputStream file
+                    = new FileInputStream("Planes.dat");
+            ObjectInputStream reader
+                    = new ObjectInputStream(file);
+            return (ArrayList<Plane>) reader.readObject();
+        } catch (IOException | ClassNotFoundException ex) {
+            //ex.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+    
+    
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////ListaUsuarios
     ////////////////////////////////////////////////////////////////////////////////////////////////////////ControladorUsuarios
