@@ -272,7 +272,7 @@ public class AdminAirline_CRUD_AirlineEmployee extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_deleteAirlineEmployeeActionPerformed
 
     private void btn_readAirlineEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_readAirlineEmployeeActionPerformed
-        createAccess();
+        
         airlineEmployee = controllerAirlineEmployee.readUsers(idPerson);
         if (airlineEmployee != null) {
 

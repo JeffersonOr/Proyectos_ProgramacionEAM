@@ -4,6 +4,8 @@
  */
 package View;
 
+import java.awt.BorderLayout;
+
 /**
  *
  * @author Usuario
@@ -78,7 +80,7 @@ public class LogisticsEmployee_View extends javax.swing.JFrame {
 
         btn_CRUD_AirlineEmployee.setBackground(new java.awt.Color(255, 153, 153));
         btn_CRUD_AirlineEmployee.setForeground(java.awt.Color.white);
-        btn_CRUD_AirlineEmployee.setText("Gestion empleados aerolineas");
+        btn_CRUD_AirlineEmployee.setText("Gestion vuelos");
         btn_CRUD_AirlineEmployee.setBorder(null);
         btn_CRUD_AirlineEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,7 +152,15 @@ public class LogisticsEmployee_View extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_CRUD_AirlineEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CRUD_AirlineEmployeeActionPerformed
+                LogisticsEmployee_CRUD_Flight logisticsEmployee_CRUD_Flight = new LogisticsEmployee_CRUD_Flight();
+        logisticsEmployee_CRUD_Flight.setSize(Content.getSize().width, Content.getSize().height);
 
+        logisticsEmployee_CRUD_Flight.setLocation(0, 0);
+
+        Content.removeAll();
+        Content.add(logisticsEmployee_CRUD_Flight, BorderLayout.CENTER);
+        Content.revalidate();
+        Content.repaint();
     }//GEN-LAST:event_btn_CRUD_AirlineEmployeeActionPerformed
 
     /**

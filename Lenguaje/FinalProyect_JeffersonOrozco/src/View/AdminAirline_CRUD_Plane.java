@@ -45,10 +45,9 @@ public class AdminAirline_CRUD_Plane extends javax.swing.JPanel {
     }
 
     private void setAccess(int idPlane, String namePlane, String statusPlane, int quantitySeat) {
-
-        txt_StatusPlane.setText(statusPlane);
         txt_idPlane.setText(Integer.toString(idPlane));
         txt_namePlane.setText(namePlane);
+        txt_StatusPlane.setText(statusPlane);
         txt_quantitySeats.setText(Integer.toString(quantitySeat));
 
     }
@@ -91,7 +90,7 @@ public class AdminAirline_CRUD_Plane extends javax.swing.JPanel {
         jLabel3.setText("Estado");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("CC");
+        jLabel4.setText("Codigo");
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 204));
 
@@ -151,7 +150,7 @@ public class AdminAirline_CRUD_Plane extends javax.swing.JPanel {
         );
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setText("Numero");
+        jLabel5.setText("Numero asientos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -174,9 +173,9 @@ public class AdminAirline_CRUD_Plane extends javax.swing.JPanel {
                                 .addGap(35, 35, 35)
                                 .addComponent(txt_namePlane, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4))
                                 .addGap(35, 35, 35)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txt_idPlane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -239,7 +238,7 @@ public class AdminAirline_CRUD_Plane extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_UpdatePlaneActionPerformed
 
     private void btn_readPlaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_readPlaneActionPerformed
-        createAccess();
+        
         plane = controllerPlanes.readPlane(idPlane);
         if (plane != null) {
 

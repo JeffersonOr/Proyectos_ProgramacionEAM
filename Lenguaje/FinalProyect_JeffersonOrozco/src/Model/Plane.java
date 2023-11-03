@@ -9,6 +9,7 @@ package Model;
  * @author jeff
  */
 public class Plane {
+
     private int idPlane;
     private String namePlane;
     private String statusPlane;
@@ -19,6 +20,11 @@ public class Plane {
         this.namePlane = namePlane;
         this.statusPlane = statusPlane;
         this.quantitySeat = quantitySeat;
+    }
+
+    public Plane(String namePlane) {
+        this.namePlane = namePlane;
+
     }
 
     public int getIdPlane() {
@@ -52,8 +58,5 @@ public class Plane {
     public void setQuantitySeat(int quantitySeat) {
         this.quantitySeat = quantitySeat;
     }
-    
-    
-    
-    
+
 }
