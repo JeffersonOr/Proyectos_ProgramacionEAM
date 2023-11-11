@@ -24,6 +24,7 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
     private String role;
     private String password;
     private String nameUser;
+    private boolean answer;
     /////////////////////////////////////
 
     ////////////////////////////////////
@@ -58,6 +59,16 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
         nameUser = txt_UserPerson.getText();
 
         user = new User(nameUser, password, role, idPerson, namePerson, lastNamePerson);
+
+    }
+    
+        private void setAccess(String nameUser, String password, String role, int idPerson, String namePerson, String lastNamePerson) {
+            
+        txt_LastNamePerson.setText(lastNamePerson);
+        txt_NamePerson.setText(namePerson);
+        txt_PasswordUser.setText(password);
+        txt_UserPerson.setText(nameUser);
+        txt_idPerson.setText(Integer.toString(idPerson));
 
     }
 
@@ -226,7 +237,7 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
                 .addGap(58, 58, 58))
         );
 
-        jPanel3.setBackground(new java.awt.Color(51, 0, 255));
+        jPanel3.setBackground(java.awt.Color.gray);
 
         jLabel2.setFont(new java.awt.Font("Cantarell", 2, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -257,7 +268,7 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(51, 0, 255));
+        jPanel4.setBackground(java.awt.Color.gray);
 
         btn_UpdateUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_UpdateUser.setText("Editar");
@@ -362,7 +373,7 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
     private void btn_CreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CreateUserActionPerformed
         /////////////////////////////////////////////////////////////////////////////////////---------------->CreateUsers
         createAccess();///////Este metodo se utiliza para darle identidad a la variables de entrada
-        boolean answer = controllerUsers.createUsers(user);
+        answer = controllerUsers.createUsers(user);
         if (answer) {
 
             JOptionPane.showMessageDialog(null, "El Usuario: " + nameUser + " se registró correctamente como " + role);
@@ -390,36 +401,21 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_CreateUserActionPerformed
 
     private void btn_ReadUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ReadUserActionPerformed
-        /*String namePerson = txt_NamePerson.getText();
-        String lastNamePerson = txt_LastNamePerson.getText();
-        int idPerson = Integer.parseInt(txt_idPerson.getText());
-        String role = cb_RoleUser.getSelectedItem().toString();
-        String password = txt_PasswordUser.getText();
-        String user = txt_UserPerson.getText();*/
+        user = controllerUsers.readUsers(idPerson);
+        if (user != null) {
 
-        GeneralAdmin_CRUD_ReadBoxUsers formGeneralAdmin_ReadBoxUsers = new GeneralAdmin_CRUD_ReadBoxUsers();
-        formGeneralAdmin_ReadBoxUsers.setVisible(true);
+            setAccess(nameUser, password, role, idPerson, namePerson, lastNamePerson);
 
-        /*formGeneralAdmin_ReadBoxUsers.getTxt_ReadUser().setText(Integer.toString(idPerson));
-        Person person = controllerUsers.readUsers(idPerson);
-        if (person != null) {
+        } else {
 
-            txt_NamePerson.setText(person.getNamePerson());
-            txt_LastNamePerson.setText(person.getLastNamePerson());
-            txt_PasswordUser.setText(person.getPassword());
-            txt_UserPerson.setText(person.getUser());
-
-        }else {
-
-            JOptionPane.showMessageDialog(null, "El usuario: "+idPerson+" no se encuentra registrado :c");
-
-        }*/
+            JOptionPane.showMessageDialog(null, "No se encontró");
+        }        
 
     }//GEN-LAST:event_btn_ReadUserActionPerformed
 
     private void btn_UpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UpdateUserActionPerformed
 
-        boolean answer = controllerUsers.updateUsers(user);
+         answer = controllerUsers.updateUsers(user);
         if (answer) {
 
             JOptionPane.showMessageDialog(null, "Se modificó correctamente c:");
@@ -434,7 +430,7 @@ public class GeneralAdmin_CRUD_Users extends javax.swing.JFrame {
 
     private void btn_DeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteUserActionPerformed
 
-        boolean answer = controllerUsers.deleteUsers(user);
+         answer = controllerUsers.deleteUsers(user);
         if (answer) {
 
             JOptionPane.showMessageDialog(null, "Se elimino correctamente");

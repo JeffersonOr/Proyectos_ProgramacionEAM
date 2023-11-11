@@ -15,6 +15,8 @@ public class GeneralAdmin_View extends javax.swing.JFrame {
      */
     public GeneralAdmin_View() {
         initComponents();
+        setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -86,6 +88,11 @@ public class GeneralAdmin_View extends javax.swing.JFrame {
         jButton3.setForeground(java.awt.Color.white);
         jButton3.setText("Gestion empleados");
         jButton3.setBorder(null);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(java.awt.Color.gray);
         jButton4.setForeground(java.awt.Color.white);
@@ -144,6 +151,11 @@ public class GeneralAdmin_View extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        GeneralAdmin_CRUD_Users GeneralAdmin_CRUD_Users = new GeneralAdmin_CRUD_Users();
+        GeneralAdmin_CRUD_Users.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -14,13 +14,13 @@ public class Flight {
     private String originFlight;
     private String destineFlight;
     private int day;
-    private int month;
+    private String month;
     private int year;
     private int hour;
     private int estimateFlight;
     private int idFlight;
 
-    public Flight(String namePlane, String nameCaptain, String originFlight, String destineFlight, int day, int month, int year, int hour, int estimateFlight, int idFlight) {
+    public Flight(String namePlane, String nameCaptain, String originFlight, String destineFlight, int day, String month, int year, int hour, int estimateFlight, int idFlight) {
         this.namePlane = namePlane;
         this.nameCaptain = nameCaptain;
         this.originFlight = originFlight;
@@ -73,11 +73,11 @@ public class Flight {
         this.day = day;
     }
 
-    public int getMonth() {
+    public String getMonth() {
         return month;
     }
 
-    public void setMonth(int month) {
+    public void setMonth(String month) {
         this.month = month;
     }
 

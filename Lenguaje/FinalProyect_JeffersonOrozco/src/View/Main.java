@@ -33,7 +33,7 @@ public class Main extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btn_GeneralAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,10 +75,10 @@ public class Main extends javax.swing.JFrame {
         jLabel3.setForeground(java.awt.Color.black);
         jLabel3.setText("Bienvenido");
 
-        jButton2.setText("Administrador General");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_GeneralAdmin.setText("Administrador General");
+        btn_GeneralAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_GeneralAdminActionPerformed(evt);
             }
         });
 
@@ -93,7 +93,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_GeneralAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
@@ -103,17 +103,20 @@ public class Main extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_GeneralAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        GeneralAdmin_CRUD_Users GeneralAdmin_CRUD_Users = new GeneralAdmin_CRUD_Users();
-        GeneralAdmin_CRUD_Users.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btn_GeneralAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GeneralAdminActionPerformed
+//        GeneralAdmin_CRUD_Users GeneralAdmin_CRUD_Users = new GeneralAdmin_CRUD_Users();
+//        GeneralAdmin_CRUD_Users.setVisible(true);
+
+        GeneralAdmin_View generalAdmin_View = new GeneralAdmin_View();
+        generalAdmin_View.setVisible(true);
+    }//GEN-LAST:event_btn_GeneralAdminActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
      User_LOGIN user_LOGIN = new User_LOGIN();
@@ -156,7 +159,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn_GeneralAdmin;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

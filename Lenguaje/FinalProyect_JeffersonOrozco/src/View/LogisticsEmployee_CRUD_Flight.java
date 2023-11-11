@@ -7,9 +7,11 @@ package View;
 import Controllers.ControllerFlights;
 import Controllers.ControllerPlanes;
 import Model.AirlineEmployee;
+import Model.Flight;
 import Model.Plane;
 import Singleton.Singleton;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,9 +29,12 @@ public class LogisticsEmployee_CRUD_Flight extends javax.swing.JPanel {
     private int hour;
     private int estimateFlight;
     private int idFlight;
+    private boolean answer;
 
     private ControllerFlights controllerFlights;
     private ControllerPlanes controllerPlanes;
+
+    Flight flight;
 
     ArrayList<AirlineEmployee> listAirlineEmployee;
     ArrayList<Plane> listPlanes;
@@ -65,6 +70,15 @@ public class LogisticsEmployee_CRUD_Flight extends javax.swing.JPanel {
 
     }
 
+    public void cleanSpaces() {///////////////////CleanTxt
+        txt_originFlight.setText(null);
+        txt_destineFlight.setText(null);
+        txt_yearFlight.setText(null);
+        txt_estimatedFlight.setText(null);
+        txt_idFlight.setText(null);
+
+    }
+
     private void createAccess() {
 
         namePlane = cb1_planeFlight.getSelectedItem().toString();
@@ -76,7 +90,19 @@ public class LogisticsEmployee_CRUD_Flight extends javax.swing.JPanel {
         year = Integer.parseInt(txt_yearFlight.getText());
         hour = Integer.parseInt(cb_hour.getSelectedItem().toString());
         estimateFlight = Integer.parseInt(txt_estimatedFlight.getText());
-        idFlight = Integer.parseInt(txt_idPlane.getText());
+        idFlight = Integer.parseInt(txt_idFlight.getText());
+
+        flight = new Flight(namePlane, captain, originFlight, destineFlight, day, month, year, hour, estimateFlight, idFlight);
+
+    }
+
+    private void setAccess(String namePlane, String nameCaptain, String originFlight, String destineFlight, int day, String month, int year, int hour, int estimateFlight, int idFlight) {
+
+        txt_originFlight.setText(originFlight);
+        txt_destineFlight.setText(destineFlight);
+        txt_yearFlight.setText(Integer.toString(year));
+        txt_estimatedFlight.setText(Integer.toString(estimateFlight));
+        txt_idFlight.setText(Integer.toString(idFlight));
 
     }
 
@@ -130,7 +156,8 @@ public class LogisticsEmployee_CRUD_Flight extends javax.swing.JPanel {
         cb_hour = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         cb2_captainFlight = new javax.swing.JComboBox<>();
-        cb_prueba = new javax.swing.JComboBox<>();
+        jLabel16 = new javax.swing.JLabel();
+        txt_idFlight = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 204));
 
@@ -393,7 +420,8 @@ public class LogisticsEmployee_CRUD_Flight extends javax.swing.JPanel {
             }
         });
 
-        cb_prueba.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel16.setText("id vuelo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -404,29 +432,30 @@ public class LogisticsEmployee_CRUD_Flight extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addGap(35, 35, 35)
+                            .addComponent(txt_destineFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel6)
+                            .addGap(35, 35, 35)
+                            .addComponent(txt_originFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addGap(35, 35, 35)
+                            .addComponent(cb1_planeFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel14)
+                            .addGap(35, 35, 35)
+                            .addComponent(cb2_captainFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(35, 35, 35)
-                                .addComponent(txt_destineFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(35, 35, 35)
-                                .addComponent(txt_originFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(35, 35, 35)
-                                .addComponent(cb1_planeFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addGap(35, 35, 35)
-                                .addComponent(cb2_captainFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addComponent(cb_prueba, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel16)
+                        .addGap(35, 35, 35)
+                        .addComponent(txt_idFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -434,7 +463,7 @@ public class LogisticsEmployee_CRUD_Flight extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -452,12 +481,14 @@ public class LogisticsEmployee_CRUD_Flight extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
                             .addComponent(cb2_captainFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cb_prueba, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(txt_idFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -480,20 +511,63 @@ public class LogisticsEmployee_CRUD_Flight extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_deletePlaneActionPerformed
 
     private void btn_createFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createFlightActionPerformed
+        createAccess();
 
+        answer = controllerFlights.createFlights(flight);
+
+        if (answer) {
+
+            JOptionPane.showMessageDialog(null, "El vuelo: " + idFlight + " se registró correctamente ");
+
+            cleanSpaces();
+
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Este vuelo ya se encuentra registrado");
+        }
     }//GEN-LAST:event_btn_createFlightActionPerformed
 
     private void btn_UpdateFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UpdateFlightActionPerformed
+        createAccess();
+        answer = controllerFlights.updateFlights(flight);
+        if (answer) {
+
+            JOptionPane.showMessageDialog(null, "Se modificó correctamente c:");
+
+        } else {
+
+            JOptionPane.showMessageDialog(null, "No se modificó >:c");
+        }
+
 
     }//GEN-LAST:event_btn_UpdateFlightActionPerformed
 
     private void btn_readFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_readFlightActionPerformed
+        flight = controllerFlights.readFlights(idFlight);
+        if (flight != null) {
 
+            setAccess(flight.getNamePlane(), flight.getNameCaptain(), flight.getOriginFlight(), flight.getDestineFlight(), flight.getDay(), flight.getMonth(), flight.getYear(), flight.getHour(), flight.getEstimateFlight(), flight.getIdFlight());
+
+        } else {
+
+            JOptionPane.showMessageDialog(null, "No se encontró");
+        }
 
     }//GEN-LAST:event_btn_readFlightActionPerformed
 
     private void btn_deleteFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteFlightActionPerformed
+        createAccess();
+        answer = controllerFlights.deleteFlights(flight);
+        if (answer) {
 
+            JOptionPane.showMessageDialog(null, "Se elimino correctamente");
+            cleanSpaces();
+
+        } else {
+
+            JOptionPane.showMessageDialog(null, "No se eliminó >:o");
+
+        }
     }//GEN-LAST:event_btn_deleteFlightActionPerformed
 
     private void cb_dayFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_dayFlightActionPerformed
@@ -531,7 +605,6 @@ public class LogisticsEmployee_CRUD_Flight extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cb_dayFlight;
     private javax.swing.JComboBox<String> cb_hour;
     private javax.swing.JComboBox<String> cb_monthFlight;
-    private javax.swing.JComboBox<String> cb_prueba;
     private javax.swing.JComboBox<String> cb_timeFlight;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -540,6 +613,7 @@ public class LogisticsEmployee_CRUD_Flight extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -555,6 +629,7 @@ public class LogisticsEmployee_CRUD_Flight extends javax.swing.JPanel {
     private javax.swing.JTextField txt_StatusPlane4;
     private javax.swing.JTextField txt_destineFlight;
     private javax.swing.JTextField txt_estimatedFlight;
+    private javax.swing.JTextField txt_idFlight;
     private javax.swing.JTextField txt_idPlane;
     private javax.swing.JTextField txt_namePlane;
     private javax.swing.JTextField txt_originFlight;
