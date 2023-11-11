@@ -22,20 +22,22 @@ public class ControllerPlanes {
 
     }
 
-    /////////////////Create users
+    /////////////////Create Planes
     public boolean createPlane(Plane Plane) {
         Plane aux = readPlane(Plane.getIdPlane());
 
         if (aux == null) {
             listPlanes.add(Plane);
             Singleton.getInstance().writeObjectListPlanes(listPlanes);
+            
+            
             return true;
         }
 
         return false;
     }
 
-    ///////////////Read Users
+    ///////////////Read Planes
     public Plane readPlane(int code) {
 
         for (int i = 0; i < listPlanes.size(); i++) {
@@ -47,8 +49,8 @@ public class ControllerPlanes {
         return null;
     }
 
-    /////////////Update Users
-    public boolean updateUsers(Plane plane) {
+    /////////////Update Planes
+    public boolean updatePlanes(Plane plane) {
         Plane aux = readPlane(plane.getIdPlane());
         for (int i = 0; i < listPlanes.size(); i++) {
             if (aux != null) {
@@ -65,8 +67,8 @@ public class ControllerPlanes {
         return false;
     }
 
-    /////////////Delete Users
-    public boolean deleteUsers(Plane plane) {
+    /////////////Delete Planes
+    public boolean deletePlanes(Plane plane) {
         Plane aux = readPlane(plane.getIdPlane());
         for (int i = 0; i < listPlanes.size(); i++) {
             if (aux != null) {
@@ -77,4 +79,10 @@ public class ControllerPlanes {
         }
         return false;
     }
+    
+    
+    
+
+    
+    
 }

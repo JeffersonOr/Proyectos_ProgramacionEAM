@@ -4,7 +4,10 @@
  */
 package View;
 
+import Model.Plane;
+import Singleton.Singleton;
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 
 /**
  *
@@ -35,8 +38,7 @@ public class LogisticsEmployee_View extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        btn_CRUD_AirlineEmployee = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btn_CRUD_Flights = new javax.swing.JButton();
         Content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,38 +80,30 @@ public class LogisticsEmployee_View extends javax.swing.JFrame {
         jButton2.setText("Mantenimientos");
         jButton2.setBorder(null);
 
-        btn_CRUD_AirlineEmployee.setBackground(new java.awt.Color(255, 153, 153));
-        btn_CRUD_AirlineEmployee.setForeground(java.awt.Color.white);
-        btn_CRUD_AirlineEmployee.setText("Gestion vuelos");
-        btn_CRUD_AirlineEmployee.setBorder(null);
-        btn_CRUD_AirlineEmployee.addActionListener(new java.awt.event.ActionListener() {
+        btn_CRUD_Flights.setBackground(new java.awt.Color(255, 153, 153));
+        btn_CRUD_Flights.setForeground(java.awt.Color.white);
+        btn_CRUD_Flights.setText("Gestion vuelos");
+        btn_CRUD_Flights.setBorder(null);
+        btn_CRUD_Flights.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_CRUD_AirlineEmployeeActionPerformed(evt);
+                btn_CRUD_FlightsActionPerformed(evt);
             }
         });
-
-        jButton4.setBackground(new java.awt.Color(255, 153, 153));
-        jButton4.setForeground(java.awt.Color.white);
-        jButton4.setText("Gestion aviones");
-        jButton4.setBorder(null);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btn_CRUD_AirlineEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+            .addComponent(btn_CRUD_Flights, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(btn_CRUD_AirlineEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_CRUD_Flights, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
 
         Content.setBackground(java.awt.Color.white);
@@ -151,7 +145,7 @@ public class LogisticsEmployee_View extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_CRUD_AirlineEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CRUD_AirlineEmployeeActionPerformed
+    private void btn_CRUD_FlightsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CRUD_FlightsActionPerformed
                 LogisticsEmployee_CRUD_Flight logisticsEmployee_CRUD_Flight = new LogisticsEmployee_CRUD_Flight();
         logisticsEmployee_CRUD_Flight.setSize(Content.getSize().width, Content.getSize().height);
 
@@ -161,7 +155,13 @@ public class LogisticsEmployee_View extends javax.swing.JFrame {
         Content.add(logisticsEmployee_CRUD_Flight, BorderLayout.CENTER);
         Content.revalidate();
         Content.repaint();
-    }//GEN-LAST:event_btn_CRUD_AirlineEmployeeActionPerformed
+        
+        
+        
+
+        
+        
+    }//GEN-LAST:event_btn_CRUD_FlightsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,10 +200,9 @@ public class LogisticsEmployee_View extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Content;
-    private javax.swing.JButton btn_CRUD_AirlineEmployee;
+    private javax.swing.JButton btn_CRUD_Flights;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

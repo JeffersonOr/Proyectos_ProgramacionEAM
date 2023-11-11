@@ -9,8 +9,8 @@ package Model;
  * @author Usuario
  */
 public class Flight {
-    private Plane plane;
-    private AirlineEmployee airlineEmployee;
+    private String namePlane;
+    private String nameCaptain;
     private String originFlight;
     private String destineFlight;
     private int day;
@@ -20,9 +20,9 @@ public class Flight {
     private int estimateFlight;
     private int idFlight;
 
-    public Flight(Plane plane, AirlineEmployee airlineEmployee, String originFlight, String destineFlight, int day, int month, int year, int hour, int estimateFlight, int idFlight) {
-        this.plane = plane;
-        this.airlineEmployee = airlineEmployee;
+    public Flight(String namePlane, String nameCaptain, String originFlight, String destineFlight, int day, int month, int year, int hour, int estimateFlight, int idFlight) {
+        this.namePlane = namePlane;
+        this.nameCaptain = nameCaptain;
         this.originFlight = originFlight;
         this.destineFlight = destineFlight;
         this.day = day;
@@ -33,30 +33,20 @@ public class Flight {
         this.idFlight = idFlight;
     }
 
-    public int getIdFlight() {
-        return idFlight;
+    public String getNamePlane() {
+        return namePlane;
     }
 
-    public void setIdFlight(int idFlight) {
-        this.idFlight = idFlight;
+    public void setNamePlane(String namePlane) {
+        this.namePlane = namePlane;
     }
 
-
-
-    public Plane getPlane() {
-        return plane;
+    public String getNameCaptain() {
+        return nameCaptain;
     }
 
-    public void setPlane(Plane plane) {
-        this.plane = plane;
-    }
-
-    public AirlineEmployee getAirlineEmployee() {
-        return airlineEmployee;
-    }
-
-    public void setAirlineEmployee(AirlineEmployee airlineEmployee) {
-        this.airlineEmployee = airlineEmployee;
+    public void setNameCaptain(String nameCaptain) {
+        this.nameCaptain = nameCaptain;
     }
 
     public String getOriginFlight() {
@@ -114,6 +104,15 @@ public class Flight {
     public void setEstimateFlight(int estimateFlight) {
         this.estimateFlight = estimateFlight;
     }
+
+    public int getIdFlight() {
+        return idFlight;
+    }
+
+    public void setIdFlight(int idFlight) {
+        this.idFlight = idFlight;
+    }
+
     
     
 }

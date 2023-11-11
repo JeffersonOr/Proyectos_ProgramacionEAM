@@ -22,10 +22,7 @@ public class Plane {
         this.quantitySeat = quantitySeat;
     }
 
-    public Plane(String namePlane) {
-        this.namePlane = namePlane;
 
-    }
 
     public int getIdPlane() {
         return idPlane;

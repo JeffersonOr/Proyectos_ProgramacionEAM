@@ -210,7 +210,10 @@ public class AdminAirline_CRUD_Plane extends javax.swing.JPanel {
 
     private void btn_createPlaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createPlaneActionPerformed
         createAccess();
+        System.out.println("Antes de llamar controlador");
         answer = controllerPlanes.createPlane(plane);
+        System.out.println("Antes de llamar controlador2");
+        
         if (answer) {
 
             JOptionPane.showMessageDialog(null, "El avion: " + namePlane + " se registró correctamente ");
@@ -225,7 +228,7 @@ public class AdminAirline_CRUD_Plane extends javax.swing.JPanel {
 
     private void btn_UpdatePlaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UpdatePlaneActionPerformed
         createAccess();
-        answer = controllerPlanes.updateUsers(plane);
+        answer = controllerPlanes.updatePlanes(plane);
         if (answer) {
 
             JOptionPane.showMessageDialog(null, "Se modificó correctamente c:");
@@ -252,7 +255,7 @@ public class AdminAirline_CRUD_Plane extends javax.swing.JPanel {
 
     private void btn_deletePlaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deletePlaneActionPerformed
         createAccess();
-        answer = controllerPlanes.deleteUsers(plane);
+        answer = controllerPlanes.deletePlanes(plane);
         if (answer) {
 
             JOptionPane.showMessageDialog(null, "Se elimino correctamente");
