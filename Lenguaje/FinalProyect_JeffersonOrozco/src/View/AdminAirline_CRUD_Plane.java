@@ -210,9 +210,9 @@ public class AdminAirline_CRUD_Plane extends javax.swing.JPanel {
 
     private void btn_createPlaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createPlaneActionPerformed
         createAccess();
-        System.out.println("Antes de llamar controlador");
+        
         answer = controllerPlanes.createPlane(plane);
-        System.out.println("Antes de llamar controlador2");
+       
         
         if (answer) {
 
@@ -222,7 +222,7 @@ public class AdminAirline_CRUD_Plane extends javax.swing.JPanel {
 
         } else {
 
-            JOptionPane.showMessageDialog(null, "Este empleado ya se encuentra registrado");
+            JOptionPane.showMessageDialog(null, "Este avion ya se encuentra registrado");
         }
     }//GEN-LAST:event_btn_createPlaneActionPerformed
 

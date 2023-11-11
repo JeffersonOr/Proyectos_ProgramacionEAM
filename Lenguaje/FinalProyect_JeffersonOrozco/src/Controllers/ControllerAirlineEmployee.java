@@ -54,6 +54,7 @@ public class ControllerAirlineEmployee {
                 listairlineEmployees.get(i).setIdPerson(airlineEmployee.getIdPerson());
                 listairlineEmployees.get(i).setLastNamePerson(airlineEmployee.getLastNamePerson());
                 listairlineEmployees.get(i).setNamePerson(airlineEmployee.getNamePerson());
+                listairlineEmployees.get(i).setPosition(airlineEmployee.getPosition());
                 
 
                 Singleton.getInstance().writeObjectairlineEmployees(listairlineEmployees);

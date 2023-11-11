@@ -53,19 +53,27 @@ public class ControllerFlights {
     /////////////Update Flights
     public boolean updateFlights(Flight flight) {
         Flight aux = readFlights(flight.getIdFlight());
+        boolean aux2 = verificAvailability(flight.getNameCaptain());
+
         for (int i = 0; i < listFlights.size(); i++) {
             if (aux != null) {
-                listFlights.get(i).setOriginFlight(flight.getOriginFlight());
-                listFlights.get(i).setDestineFlight(flight.getDestineFlight());
-                listFlights.get(i).setNamePlane(flight.getNamePlane());
-                listFlights.get(i).setNameCaptain(flight.getNameCaptain());
-                listFlights.get(i).setDay(flight.getDay());
-                listFlights.get(i).setMonth(flight.getMonth());
-                listFlights.get(i).setYear(flight.getYear());
-                listFlights.get(i).setHour(flight.getHour());
-                listFlights.get(i).setEstimateFlight(flight.getEstimateFlight());
-                Singleton.getInstance().writeObjectListFlights(listFlights);
-                return true;
+
+                if (aux2) {
+                    listFlights.get(i).setOriginFlight(flight.getOriginFlight());
+                    listFlights.get(i).setDestineFlight(flight.getDestineFlight());
+                    listFlights.get(i).setNamePlane(flight.getNamePlane());
+                    listFlights.get(i).setNameCaptain(flight.getNameCaptain());
+                    listFlights.get(i).setDay(flight.getDay());
+                    listFlights.get(i).setMonth(flight.getMonth());
+                    listFlights.get(i).setYear(flight.getYear());
+                    listFlights.get(i).setHour(flight.getHour());
+                    listFlights.get(i).setEstimateFlight(flight.getEstimateFlight());
+                    Singleton.getInstance().writeObjectListFlights(listFlights);
+                    return true;
+
+                } else {
+                    return false;
+                }
             }
         }
         return false;
@@ -84,11 +92,11 @@ public class ControllerFlights {
         return false;
     }
 
-    public boolean verificAvailability(Flight flight) {
-        boolean aux = false;
+    public boolean verificAvailability(String nameCaptain) {
+
         for (int i = 0; i < listFlights.size(); i++) {
-            if (flight.getNameCaptain() == listAirlineEmployee.get(i).getNamePerson()) {
-                aux=true;
+            if (nameCaptain == listAirlineEmployee.get(i).getNamePerson()&&listAirlineEmployee.get(i).getAvailability()!="Ocupado") {
+                return true;
             }
         }
         return false;

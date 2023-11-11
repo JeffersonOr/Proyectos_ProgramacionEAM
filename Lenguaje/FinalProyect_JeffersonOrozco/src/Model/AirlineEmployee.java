@@ -22,6 +22,13 @@ public class AirlineEmployee extends Person {
         this.availability = availability;
         this.position = position;
     }
+    
+        public AirlineEmployee( String position, int idPerson, String namePerson, String lastNamePerson) {
+        super(idPerson, namePerson, lastNamePerson);
+        this.position = position;
+    }
+    
+    
 
     public String getAvailability() {
         return availability;

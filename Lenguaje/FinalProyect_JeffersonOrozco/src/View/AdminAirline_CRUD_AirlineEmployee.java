@@ -6,6 +6,7 @@ package View;
 
 import Controllers.ControllerAirlineEmployee;
 import Model.AirlineEmployee;
+import java.nio.charset.Charset;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +18,7 @@ public class AdminAirline_CRUD_AirlineEmployee extends javax.swing.JPanel {
     private String namePerson;
     private String lastNamePerson;
     private int idPerson;
+    private String positionPerson;
 
     private boolean answer;
 
@@ -37,8 +39,11 @@ public class AdminAirline_CRUD_AirlineEmployee extends javax.swing.JPanel {
         namePerson = txt_namePerson.getText();
         lastNamePerson = txt_LastNamePerson.getText();
         idPerson = Integer.parseInt(txt_idPerson.getText());
+        positionPerson = cb_positionPerson.getSelectedItem().toString();
+        
+        
 
-        airlineEmployee = new AirlineEmployee(idPerson, namePerson, lastNamePerson);
+        airlineEmployee = new AirlineEmployee(positionPerson, idPerson, namePerson, lastNamePerson);
 
     }
 
@@ -47,6 +52,7 @@ public class AdminAirline_CRUD_AirlineEmployee extends javax.swing.JPanel {
         txt_namePerson.setText(namePerson);
         txt_LastNamePerson.setText(lastNamePerson);
         txt_idPerson.setText(Integer.toString(idPerson));
+        
 
     }
 
@@ -80,6 +86,8 @@ public class AdminAirline_CRUD_AirlineEmployee extends javax.swing.JPanel {
         btn_updateAirlineEmployeee = new javax.swing.JButton();
         btn_readAirlineEmployee = new javax.swing.JButton();
         btn_deleteAirlineEmployee = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        cb_positionPerson = new javax.swing.JComboBox<>();
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 204));
         jPanel2.setForeground(new java.awt.Color(102, 102, 102));
@@ -177,6 +185,11 @@ public class AdminAirline_CRUD_AirlineEmployee extends javax.swing.JPanel {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setText("cargo");
+
+        cb_positionPerson.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador aerolinea", "Capitan", "Empleado logistica" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -201,6 +214,10 @@ public class AdminAirline_CRUD_AirlineEmployee extends javax.swing.JPanel {
                                 .addComponent(jLabel4)
                                 .addGap(35, 35, 35)
                                 .addComponent(txt_idPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel5)
+                        .addGap(30, 30, 30)
+                        .addComponent(cb_positionPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -210,7 +227,9 @@ public class AdminAirline_CRUD_AirlineEmployee extends javax.swing.JPanel {
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txt_namePerson, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_namePerson, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(cb_positionPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -291,11 +310,13 @@ public class AdminAirline_CRUD_AirlineEmployee extends javax.swing.JPanel {
     private javax.swing.JButton btn_deleteAirlineEmployee;
     private javax.swing.JButton btn_readAirlineEmployee;
     private javax.swing.JButton btn_updateAirlineEmployeee;
+    private javax.swing.JComboBox<String> cb_positionPerson;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txt_LastNamePerson;
